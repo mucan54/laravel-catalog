@@ -21,14 +21,14 @@ class CustomerEditScreen extends Screen
      *
      * @var string
      */
-    public $name = 'CustomerEditScreen';
+    public $name = 'Kullanıcı Düzenle';
 
     /**
      * Display header description.
      *
      * @var string
      */
-    public $description = 'CustomerEditScreen';
+    public $description = 'Kullanıcı düzenleyebilir ve ekleyebilirsiniz';
 
     /**
      * Query data.
@@ -56,17 +56,17 @@ class CustomerEditScreen extends Screen
     public function commandBar(): array
     {
         return [
-            Button::make('Create post')
+            Button::make('Kullanıcı Oluştur')
                 ->icon('pencil')
                 ->method('createOrUpdate')
                 ->canSee(!$this->exists),
 
-            Button::make('Update')
+            Button::make('Güncelle')
                 ->icon('note')
                 ->method('createOrUpdate')
                 ->canSee($this->exists),
 
-            Button::make('Remove')
+            Button::make('Sil')
                 ->icon('trash')
                 ->method('remove')
                 ->canSee($this->exists),
@@ -82,20 +82,22 @@ class CustomerEditScreen extends Screen
     {
         return [
             Layout::rows([
-                Input::make('post.title')
-                    ->title('Title')
-                    ->placeholder('Attractive but mysterious title')
-                    ->help('Specify a short descriptive title for this post.'),
+                Input::make('customer.username')
+                    ->title('Kullanıcı ID')
+                    ->placeholder('kullanici-adi')
+                    ->help('Kullanıcıya ait benzersiz bir id olmalıdır.'),
 
-                TextArea::make('post.description')
-                    ->title('Description')
-                    ->rows(3)
-                    ->maxlength(200)
-                    ->placeholder('Brief description for preview'),
+                Input::make('customer.name')
+                    ->title('Kullanıcı Adı')
+                    ->placeholder('Kullanıcı Adı'),
+                
+                    Input::make('customer.email')
+                    ->title('Kullanıcı Mail Adres')
+                    ->placeholder('site@example.com'),
 
-
-                Quill::make('post.body')
-                    ->title('Main text'),
+                    Input::make('customer.password')
+                    ->title('Kullanıcı Şifresi')
+                    ->placeholder('123123'),
 
             ])
         ];

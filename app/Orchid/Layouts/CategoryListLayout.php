@@ -6,6 +6,8 @@ use Orchid\Screen\TD;
 use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Layouts\Table;
 use App\Models\Category as ModelsProducts;
+use Orchid\Screen\Actions\DropDown;
+use Orchid\Screen\Actions\Button;
 
 class CategoryListLayout extends Table
 {
@@ -34,6 +36,28 @@ class CategoryListLayout extends Table
                 })->sort()->filter(TD::FILTER_TEXT),
             TD::set('created_at', 'Eklenme T.')->sort(),
             TD::set('updated_at', 'Düzenlenme T.')->sort(),
+            TD::set('id', 'ID')
+            ->align(TD::ALIGN_CENTER)
+            ->width('100px')
+            ->render(function (ModelsProducts $user) {
+                return DropDown::make()
+                    ->icon('options-vertical')
+                    ->list([
+
+                        Link::make(__('Düzenle'))
+                            ->route('platform.category.edit', $user->id)
+                            ->icon('pencil'),
+
+                        Button::make(__('Sil'))
+                            ->method('remove')
+                            ->confirm(__('Kategoriyi silmek istediğinize emin misiniz?'))
+                            ->route('platform.category.edit', $user->id)
+                            ->parameters([
+                                'id' => $user->id,
+                            ])
+                            ->icon('trash'),
+                    ]);
+            }),
         ];
     }
 }

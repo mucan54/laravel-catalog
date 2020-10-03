@@ -112,4 +112,14 @@ class CategoryEditScreen extends Screen
         return redirect()->route('platform.customer.list');
     }
 
+    public function remove(Category $post)
+    {
+        $post->delete()
+            ? Alert::info('You have successfully deleted the post.')
+            : Alert::warning('An error has occurred')
+        ;
+
+        return redirect()->route('platform.products.list');
+    }
+
 }

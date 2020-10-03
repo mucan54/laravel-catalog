@@ -27,14 +27,16 @@ class CustomerListLayout extends Table
     protected function columns(): array
     {
         return [
-            TD::set('title', 'Title')
-                ->render(function (Customer $post) {
-                    return Link::make($post->name)
-                        ->route('platform.post.edit', $post);
-                }),
-
-            TD::set('created_at', 'Created'),
-            TD::set('updated_at', 'Last edit'),
+            TD::set('username', 'Kullanıcı ID')
+            ->render(function (Customer $post) {
+                return Link::make($post->username)
+                    ->route('platform.customer.edit', $post);
+        }),
+            TD::set('name', 'Kullanıcı İsmi'),
+            TD::set('email', 'Kullanıcı Mail'),
+            TD::set('password', 'Şifre'),
+            TD::set('created_at', 'Oluşturulma T.'),
+            TD::set('updated_at', 'Değiştirilme T.'),
         ];
     }
 }

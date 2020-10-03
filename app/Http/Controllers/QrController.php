@@ -18,7 +18,8 @@ class QrController extends Controller
     public function __invoke()
     {
 
-        $projects = Products::where('sku', $this->param->parameter('sku'))->get();
+        $projects = Products::where('sku', $this->param->parameter('sku'))->first();
+
 
         return view('qr.index', compact('projects'));
 

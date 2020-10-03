@@ -2,27 +2,23 @@
 
 namespace App\Orchid\Screens;
 
-use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Screen;
-use App\Orchid\Layouts\CustomerListLayout;
-use App\Models\Customer;
 
-
-class CustomerListScreen extends Screen
+class QrSettingScreen extends Screen
 {
     /**
      * Display header name.
      *
      * @var string
      */
-    public $name = 'Kullanıcı Listesi';
+    public $name = 'QrSettingScreen';
 
     /**
      * Display header description.
      *
      * @var string
      */
-    public $description = '';
+    public $description = 'QrSettingScreen';
 
     /**
      * Query data.
@@ -31,9 +27,7 @@ class CustomerListScreen extends Screen
      */
     public function query(): array
     {
-        return [
-            'customer' => Customer::paginate()
-        ];
+        return [];
     }
 
     /**
@@ -43,11 +37,7 @@ class CustomerListScreen extends Screen
      */
     public function commandBar(): array
     {
-        return [
-            Link::make('Yeni Ekle')
-                ->icon('pencil')
-                ->route('platform.customer.edit')
-        ];
+        return [];
     }
 
     /**
@@ -57,8 +47,6 @@ class CustomerListScreen extends Screen
      */
     public function layout(): array
     {
-        return [
-            CustomerListLayout::class
-        ];
+        return [];
     }
 }
