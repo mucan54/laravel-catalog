@@ -18,7 +18,10 @@ class QrController extends Controller
     public function __invoke()
     {
 
+        if($this->param->parameter('pass')==substr(md5($this->param->parameter('sku')), 0, 5))
         $projects = Products::where('sku', $this->param->parameter('sku'))->first();
+        else
+        return view('welcome');
 
 
         return view('qr.index', compact('projects'));
