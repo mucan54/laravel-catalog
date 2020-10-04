@@ -100,7 +100,7 @@
 		<section class="product-area shop-sidebar shop section">
 			<div class="container">
                 @if($projects->myhero)
-                <div class="row"><img style='width:100%;' src="{{ $projects->myhero->url }}"></div>
+                <div class="row"><img style='width: 100%;height: 100%;padding-bottom: 100px;' src="{{ $projects->myhero->url }}"></div>
                 @endif
                 <div class="row">
                     <div class="col-sm-8 parent owl-theme">
@@ -189,5 +189,29 @@
 
 <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+<script>
+    var mySwiper = new Swiper('.swiper-container', {
+      // Optional parameters
+      direction: 'horizontal',
+      loop: true,
+    
+      // If we need pagination
+      pagination: {
+        el: '.swiper-pagination',
+      },
+    
+      // Navigation arrows
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+    
+      // And if we need scrollbar
+      scrollbar: {
+        el: '.swiper-scrollbar',
+      },
+    })
+    </script>
 </body>
 </html>
