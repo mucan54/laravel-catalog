@@ -38,5 +38,5 @@ Route::any('logout', [CustomerController::class,'logout'])
 ->name('logout');
 
 
-Route::get('qr/{sku}/{pass}', QrController::class)
+Route::get('qr/{sku}/{pass}', [QrController::class, 'page'])
 ->name('products.qr');

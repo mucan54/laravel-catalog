@@ -18,4 +18,14 @@ class Category extends Model
         'category'
     ];
 
+        protected $allowedFilters = [
+        'name',
+        'category'
+    ];
+
+    protected $allowedSorts = [
+        'name',
+        'category'
+    ];
+
 }

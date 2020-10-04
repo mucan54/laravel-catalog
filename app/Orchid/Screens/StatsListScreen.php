@@ -13,14 +13,14 @@ class StatsListScreen extends Screen
      *
      * @var string
      */
-    public $name = 'StatsListScreen';
+    public $name = 'Kullanıcı İstatistikleri';
 
     /**
      * Display header description.
      *
      * @var string
      */
-    public $description = 'StatsListScreen';
+    public $description = 'Kullanıcıların gezdikleri ürünleri görebilirsiniz.';
 
     /**
      * Query data.
@@ -30,7 +30,7 @@ class StatsListScreen extends Screen
     public function query(): array
     {
         return [
-            'stats' => Stats::paginate()
+            'stats' => Stats::filters()->defaultSort('id')->paginate()
         ];
     }
 

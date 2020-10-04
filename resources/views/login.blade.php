@@ -266,6 +266,10 @@ input[type=text]:placeholder {
   width:60%;
 }
 
+.first{
+    padding:50px;
+}
+
 
 
 </style>
@@ -275,7 +279,7 @@ input[type=text]:placeholder {
 
     <!-- Icon -->
     <div class="fadeIn first">
-      <img src="http://danielzawadzki.com/codepen/01/icon.svg" id="icon" alt="User Icon" />
+        <h3>Rosetta Stone Atelier<h3>
     </div>
 
     <!-- Login Form -->

@@ -25,10 +25,11 @@ class StatsListLayout extends Table
     protected function columns(): array
     {
         return [
-            TD::set('user_name','Kullanıcı'),
-            TD::set('product_name','Ürün'),
-            TD::set('search','Arama'),
-            TD::set('created_at', 'Tarih'),
+            TD::set('user_name','Kullanıcı')->sort()->filter(TD::FILTER_TEXT),
+            TD::set('product_name','Ürün')->sort()->filter(TD::FILTER_TEXT),
+            TD::set('product_id','Ürün SKU')->sort()->filter(TD::FILTER_TEXT),
+            TD::set('search','Arama')->sort()->filter(TD::FILTER_TEXT),
+            TD::set('created_at', 'Tarih')->sort()->filter(TD::FILTER_TEXT),
         ];
     }
 

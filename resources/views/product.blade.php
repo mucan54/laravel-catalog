@@ -8,7 +8,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<!-- Title Tag  -->
-    <title>Eshop - eCommerce HTML5 Template.</title>
+<title>Rosetta Stone Atelier - {{$projects->name}}</title>
 	<!-- Favicon -->
 	<link rel="icon" type="image/png" href="images/favicon.png">
 	<!-- Web Font -->
@@ -99,7 +99,9 @@
 		<!-- Product Style -->
 		<section class="product-area shop-sidebar shop section">
 			<div class="container">
+                @if($projects->myhero)
                 <div class="row"><img style='width:100%;' src="{{ $projects->myhero->url }}"></div>
+                @endif
                 <div class="row">
                     <div class="col-sm-8 parent owl-theme">
             

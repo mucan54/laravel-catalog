@@ -33,7 +33,7 @@ class ProductsListScreen extends Screen
     public function query(): array
     {
         return [
-            'products' => Products::paginate()
+            'products' => Products::filters()->defaultSort('id')->paginate()
         ];
     }
 

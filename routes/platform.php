@@ -26,6 +26,7 @@ use App\Orchid\Screens\CustomerEditScreen;
 use App\Orchid\Screens\CustomerListScreen;
 use App\Orchid\Screens\SettingsEditScreen;
 use App\Orchid\Screens\StatsListScreen;
+use App\Http\Controllers\QrController;
 
 
 /*
@@ -156,6 +157,10 @@ Route::screen('settings', SettingsEditScreen::class)
 
 Route::screen('stats', StatsListScreen::class)
     ->name('platform.stats.list');
+
+
+Route::get('qrdownload/{sku}', [QrController::class, 'download'])
+    ->name('platform.qr.download');
 
 
 //Route::screen('idea', 'Idea::class','platform.screens.idea');

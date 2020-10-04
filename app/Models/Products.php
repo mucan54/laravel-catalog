@@ -28,6 +28,12 @@ class Products extends Model
         'category'
     ];
 
+    protected $allowedSorts = [
+        'name',
+        'sku',
+        'category'
+    ];
+
     public function myhero()
     {
 

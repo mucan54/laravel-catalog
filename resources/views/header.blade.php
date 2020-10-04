@@ -26,10 +26,10 @@ padding: 10px;
 <div class="middle-inner">
     <div class="container">
         <div class="row">
-            <div class="col-lg-2 col-md-2 col-12">
+            <div class="col-lg-4 col-md-2 col-12">
                 <!-- Logo -->
                 <div class="logo">
-                    <a href="{{ url('/') }}"><img src="/images/logo.png" alt="logo"></a>
+                    <a href="{{ url('/') }}"><h3>Rosetta Stone Atelier</h3></a>
                 </div>
                
                 </div>

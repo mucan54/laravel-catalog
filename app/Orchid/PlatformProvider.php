@@ -43,7 +43,7 @@ class PlatformProvider extends OrchidServiceProvider
 
                 ItemMenu::label('İstatistikleri')
                 ->icon('graph')
-                ->route('platform.category.list'),
+                ->route('platform.stats.list'),
         ];
     }
 

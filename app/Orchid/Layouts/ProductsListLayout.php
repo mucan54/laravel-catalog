@@ -41,7 +41,7 @@ class ProductsListLayout extends Table
             TD::set('Ürün QR')
                 ->render(function (ModelsProducts $products) {
                      $qrcode = new Generator;
-                    return '<a href=\'test\'>'.$qrcode->size(80)->generate(url("/qr/".$products->sku."/".substr(md5($products->sku), 0, 5))).'</a>';
+                    return '<a onclick="location.href =\'/admin/qrdownload/'.$products->sku.'\';">'.$qrcode->size(80)->generate(url("/qr/".$products->sku."/".substr(md5($products->sku), 0, 5))).'</a>';
                 }),
                 TD::set('Ürün Resmi')
                 ->render(function (ModelsProducts $products) {

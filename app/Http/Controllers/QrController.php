@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Products;
+use SimpleSoftwareIO\QrCode\Generator;
 
 class QrController extends Controller
 {
@@ -15,7 +16,7 @@ class QrController extends Controller
     }
 
     
-    public function __invoke()
+    public function page()
     {
 
         if($this->param->parameter('pass')==substr(md5($this->param->parameter('sku')), 0, 5))
@@ -25,6 +26,17 @@ class QrController extends Controller
 
 
         return view('qr.index', compact('projects'));
+
+    }
+
+    public function download($sku){
+
+        $qrcode = new Generator;
+        $qrcode = $qrcode->format('eps')->size(150)->generate(url("/qr/".$sku."/".substr(md5($sku), 0, 5)));
+
+        echo header('Content-Disposition: attachment; filename="'.$sku.'.eps"');
+        echo $qrcode;
+
 
     }
 }
