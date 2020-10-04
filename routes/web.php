@@ -4,6 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\QrController;
 use App\Http\Controllers\AllProductsController;
 use App\Http\Controllers\ProductDetailController;
+use App\Http\Controllers\CustomerController;
+use App\Http\Middleware\CustomerMiddleware;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,12 +18,21 @@ use App\Http\Controllers\ProductDetailController;
 |
 */
 
-Route::get('/', AllProductsController::class)
+Route::middleware([CustomerMiddleware::class])->group(function () {
+
+
+        Route::get('/', AllProductsController::class)
+        ->name('products');
+
+
+        Route::get('id/{id}', ProductDetailController::class)
+        ->name('product');
+
+});
+
+
+Route::any('login', CustomerController::class)
 ->name('products');
-
-
-Route::get('sku/{sku}', ProductDetailController::class)
-->name('product');
 
 
 Route::get('qr/{sku}/{pass}', QrController::class)

@@ -113,13 +113,13 @@
 							<div class="col-lg-4 col-md-6 col-12">
 								<div class="single-product">
 									<div class="product-img">
-										<a href="/sku/{{$product->id}}">
+										<a href="/id/{{$product->id}}">
 										<img class="default-img" src="{{$product->attachment()->first()->url()}}" alt="#">
 											
 										</a>
 									</div>
 									<div class="myh3 product-content">
-										<a href="/sku/{{$product->id}}">{{$product->name}}</a>
+										<a href="/id/{{$product->id}}">{{$product->name}}</a>
 									</div>
 								</div>
 							</div>
