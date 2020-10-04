@@ -18,7 +18,7 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->string('sku')->unique();
             $table->text('body');
-            $table->foreign('category')->references('id')->on('category')->onDelete('cascade');
+            $table->bigInteger('category');
             $table->timestamps();
         });
     }
