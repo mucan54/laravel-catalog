@@ -36,7 +36,7 @@ class AllProductsController extends Controller
                 $products = $products->where('category', $this->request->query('cat'));
         }
         else
-        $products = Products::latest()->paginate(9)->onEachSide(3);
+        $products = Products::latest();
         $category = Category::all();
 
         $products=$products->paginate(9)->onEachSide(3);
