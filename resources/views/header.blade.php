@@ -40,7 +40,7 @@ padding: 10px;
                 <div class="search-top">
                     <!-- Search Form -->
                     
-                        <form style='display: flex;'>
+                        <form style='display: flex;' action='/'>
                             <input name="search" value='{{ app('request')->input('search') }}' placeholder="Ürün Ara..." type="search">
                             <button class="btnn"><i class="ti-search"></i></button>
                         </form>

@@ -31,8 +31,11 @@ Route::middleware([CustomerMiddleware::class])->group(function () {
 });
 
 
-Route::any('login', CustomerController::class)
-->name('products');
+Route::any('login', [CustomerController::class,'login'])
+->name('login');
+
+Route::any('logout', [CustomerController::class,'logout'])
+->name('logout');
 
 
 Route::get('qr/{sku}/{pass}', QrController::class)

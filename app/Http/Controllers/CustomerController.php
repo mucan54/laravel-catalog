@@ -8,39 +8,62 @@ use App\Models\Customer;
 use Orchid\Screen\Fields\Input;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Session;
+use App\Models\Stats;
 
 class CustomerController extends Controller
 {
 
 
-    public function __invoke(Request $request){
+    public function login(Request $request){
 
         $rules = array(
             'password'  => 'required|alphaNum|min:3'
         );
+
+        
         
         // run the validation rules on the inputs from the form
         $validator = Validator::make($request->input(), $rules);
-        
-        // if the validator fails, redirect back to the form
+
         if ($validator->fails()) {
             return Redirect::to('login')
-                ->withErrors($validator) // send back all errors to the login form
-                ->withInput($request->except('password')); // send back the input (not the password) so that we can repopulate the form
+                ->withErrors($validator) 
+                ->withInput($request->except('password')); 
         } else {
-        
-            // create our user data for the authenticat
-        
-            // attempt to do the login
-            if (Customer::where('password',$request->input('password'))) {
 
-                session()->put('database', 'database');
+            $user=Customer::where('password',$request->input('password'))->first();
+        
+            if ($user!== null) {
+
+                $stat= new Stats;
+
+                $stat->product_name='Üye Girişi';
+                $session = sha1(time());
+                $stat->user_id = $user->id;
+                $stat->user_name = $user->name;
+                $stat->session = $session;
+                $stat->save();
+                
+                session()->put('user_name', $user->name);
+                session()->put('user_id', $user->id);
+                session()->put('sessionId', $session);
         
             }     
 
             return redirect('/');
             
         }
+    }
+
+
+    public function logout(Request $request){
+
+                
+                session()->forget('user_name');
+                session()->forget('user_id');
+                session()->forget('sessionId');
+                return redirect('/');
+    
     }
 
 }

@@ -55,6 +55,17 @@
 		padding: 5px;
 		color: rgb(255, 255, 255);
 		}
+
+		.mytext{
+			text-align: center;
+		}
+
+		.product-content{
+			margin-top: 20px;
+			height: 70px;
+			vertical-align: middle;
+			display: table-cell;
+		}
 	</style>
 	
 </head>
@@ -119,7 +130,7 @@
 										</a>
 									</div>
 									<div class="myh3 product-content">
-										<a href="/id/{{$product->id}}">{{$product->name}}</a>
+										<a class='mytext' href="/id/{{$product->id}}">{{$product->name}}</a>
 									</div>
 								</div>
 							</div>

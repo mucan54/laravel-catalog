@@ -24,6 +24,8 @@ use App\Orchid\Screens\CategoryEditScreen;
 use App\Orchid\Screens\CategoryListScreen;
 use App\Orchid\Screens\CustomerEditScreen;
 use App\Orchid\Screens\CustomerListScreen;
+use App\Orchid\Screens\SettingsEditScreen;
+use App\Orchid\Screens\StatsListScreen;
 
 
 /*
@@ -143,5 +145,17 @@ Route::screen('customer/{customer?}', CustomerEditScreen::class)
 
 Route::screen('customers', CustomerListScreen::class)
     ->name('platform.customer.list');
+
+
+
+// SETTINGS
+Route::screen('settings', SettingsEditScreen::class)
+    ->name('platform.settings.edit');
+
+
+
+Route::screen('stats', StatsListScreen::class)
+    ->name('platform.stats.list');
+
 
 //Route::screen('idea', 'Idea::class','platform.screens.idea');

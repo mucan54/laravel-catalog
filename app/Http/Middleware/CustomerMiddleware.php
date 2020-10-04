@@ -5,6 +5,8 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use App\Models\Stats;
+use App\Models\Products;
 
 class CustomerMiddleware
 {
@@ -19,10 +21,33 @@ class CustomerMiddleware
     {
 
 
-        if (session()->has('database')) {
+        if (session()->has('sessionId')) {
+
+            $stat= new Stats;
+
+            if($request->route()->parameter('id') || $request->route()->parameter('search') || $request->route()->parameter('cat'))
+            {
+                if($request->route()->parameter('id'))
+                $stat->product_id=$request->route()->parameter('id');
+                $product = Products::where('id',$request->route()->parameter('id'))->first();
+                $stat->product_name=$product->name;
+                if($request->route()->parameter('search'))
+                $stat->search=$request->route()->parameter('search');
+                else if($request->route()->parameter('cat'))
+                $stat->search='Kategori '.$request->route()->parameter('search');
+    
+                $stat->user_id = session()->get('user_id');
+                $stat->user_name = session()->get('user_name');
+                $stat->session = session()->get('sessionId');
+                $stat->save();
+
+            }
+
             return $next($request);
         }
         else
         return response(view('login'));
     }
+
+
 }
