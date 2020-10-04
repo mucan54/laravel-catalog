@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Foundation\AliasLoader;
+use Illuminate\Support\Facades\Schema;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -25,6 +26,8 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         $loader = AliasLoader::getInstance();
+
+        Schema::defaultStringLength(191);
 
         $loader->alias(
             'App\Providers\ImageOptimizeProvider',
