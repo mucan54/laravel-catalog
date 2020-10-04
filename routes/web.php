@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\QrController;
+use App\Http\Controllers\AllProductsController;
+use App\Http\Controllers\ProductDetailController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,9 +15,13 @@ use App\Http\Controllers\QrController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', AllProductsController::class)
+->name('products');
+
+
+Route::get('sku/{sku}', ProductDetailController::class)
+->name('product');
+
 
 Route::get('qr/{sku}/{pass}', QrController::class)
 ->name('products.qr');

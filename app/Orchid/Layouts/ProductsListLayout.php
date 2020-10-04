@@ -8,6 +8,7 @@ use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Layouts\Table;
 use SimpleSoftwareIO\QrCode\Generator;
 
+
 class ProductsListLayout extends Table
 {
     /**
@@ -44,7 +45,7 @@ class ProductsListLayout extends Table
                 }),
                 TD::set('Ürün Resmi')
                 ->render(function (ModelsProducts $products) {
-                    return '<img src=\''.$products->hero().'\' height=\'80px\'>';
+                    return '<img src=\''.$products->myhero->url.'\' height=\'80px\'>';
                 }),
             TD::set('name', 'Ürün Adı')
                 ->render(function (ModelsProducts $post) {

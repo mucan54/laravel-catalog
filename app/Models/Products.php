@@ -28,10 +28,10 @@ class Products extends Model
         'category'
     ];
 
-    public function hero()
+    public function myhero()
     {
-        
-        return json_decode($this->hasOne(Attachment::class, 'id', 'hero')->withDefault()->get())[0]->url;
+
+        return $this->hasOne(Attachment::class, 'id', 'hero');
     }
 
     public function cat()

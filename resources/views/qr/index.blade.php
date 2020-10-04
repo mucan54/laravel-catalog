@@ -38,7 +38,7 @@ padding: 5px;
 </head>
 
 <div class="container">
-    <div class="row"><img style='width:100%;' src="{{ $projects->hero() }}"></div>
+    <div class="row"><img style='width:100%;' src="{{ $projects->myhero->url }}"></div>
     <div class="row">
         <div class="col-sm-8 parent owl-theme">
 

@@ -38,24 +38,41 @@
     <link rel="stylesheet" href="/css/site/owl-carousel.css">
 	<!-- Slicknav -->
     <link rel="stylesheet" href="/css/site/slicknav.min.css">
+
+
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css">
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+
 	
 	<!-- Eshop StyleSheet -->
 	<link rel="stylesheet" href="/css/site/reset.css">
 	<link rel="stylesheet" href="/css/site/style.css">
     <link rel="stylesheet" href="/css/site/responsive.css">
 
-	<style>
+    <style>
 
-		.single-product{
-			background-color: rgb(173, 173, 173);
-		}
-		.myh3{
-			font-size: 18px !important;
-		text-align: center;
-		padding: 5px;
-		color: rgb(255, 255, 255);
-		}
-	</style>
+
+        @media only screen and (min-width: 750px) {
+            .swiper-container{
+                display: none;
+            }
+            .parent{
+                width: 66.66666667%;
+        display: table;
+            }
+        
+            .img{
+                width: 50%;
+        padding: 5px;
+            }
+        }
+        
+        @media only screen and (max-width: 750px) {
+            .nomobile{
+                display: none;
+            }
+        }
+            </style>
 	
 </head>
 <body class="js">
@@ -70,68 +87,47 @@
 		</div>
 	</div>
 	<!-- End Preloader -->
-		@include('header')
-		<!-- Header -->
 		
+		<!-- Header -->
+		@include('header')
 		<!--/ End Header -->
 		
 		<!-- Breadcrumbs -->
-		@include('breadcrumb')
+		@include('breadcrumb', ['sayfa' => $projects->name])
 		<!-- End Breadcrumbs -->
 		
 		<!-- Product Style -->
 		<section class="product-area shop-sidebar shop section">
 			<div class="container">
-				<div class="row">
-					<div class="col-lg-3 col-md-4 col-12">
-						<div class="shop-sidebar">
-								<!-- Single Widget -->
-								<div class="single-widget category">
-									<h3 class="title">Kategoriler</h3>
-									<ul class="categor-list">
-										@foreach($category as $cat)
-									    <li><a href="{!! route('products',['cat'=>$cat->id,'search'=>app('request')->input('search')]) !!}">{{$cat->name}}</a></li>
-										@endforeach
-									</ul>
-								</div>
-								<!--/ End Single Widget -->
-								<!-- Shop By Price -->
-
-									<!--/ End Shop By Price -->
-								<!-- Single Widget -->
-								
-								<!--/ End Single Widget -->
-								<!-- Single Widget -->
-								
-								<!--/ End Single Widget -->
-						</div>
-					</div>
-					<div class="col-lg-9 col-md-8 col-12">
-						<div class="row">
-							
-							@foreach($products as $product)
-							<div class="col-lg-4 col-md-6 col-12">
-								<div class="single-product">
-									<div class="product-img">
-										<a href="/sku/{{$product->id}}">
-										<img class="default-img" src="{{$product->attachment()->first()->url()}}" alt="#">
-											
-										</a>
-									</div>
-									<div class="myh3 product-content">
-										<a href="/sku/{{$product->id}}">{{$product->name}}</a>
-									</div>
-								</div>
-							</div>
-							@endforeach
-							
-							
-						</div>
-						<div class="pagination">
-							{{ $products->appends(request()->except('page'))->render() }} 
-						</div>
-					</div>
-				</div>
+                <div class="row"><img style='width:100%;' src="{{ $projects->myhero->url }}"></div>
+                <div class="row">
+                    <div class="col-sm-8 parent owl-theme">
+            
+                        @foreach($projects->attachment()->get() as $item)
+                                <img class='img nomobile' src="{{ $item->url }}">
+                                 @endforeach
+                         <div class="swiper-container">
+                            <!-- Additional required wrapper -->
+                            <div class="swiper-wrapper">
+                                <!-- Slides -->
+                                @foreach($projects->attachment()->get() as $item)
+                                <div class="swiper-slide"><img class='img' src="{{ $item->url }}"></div>
+                                 @endforeach
+                            </div>
+                            <!-- If we need pagination -->
+                            <div class="swiper-pagination"></div>
+                        
+                            <!-- If we need navigation buttons -->
+                            <div class="swiper-button-prev"></div>
+                            <div class="swiper-button-next"></div>
+                        
+                            <!-- If we need scrollbar -->
+                            <div class="swiper-scrollbar"></div>
+                        </div>
+                    </div>
+                
+                    <div class="col-sm-3" style='background: rgba(220, 140, 246, 0.03);'><h1 style='text-align:center; padding:10px; background: beige;' >{{$projects->name}}</h1>{!! $projects->body !!} </div>
+                <div class="row"></div>
 			</div>
 		</section>
 		<!--/ End Product Style 1  -->	
@@ -186,6 +182,10 @@
 	<!-- Easing JS -->
 	<script src="/js/site/easing.js"></script>
 	<!-- Active JS -->
-	<script src="/js/site/active.js"></script>
+    <script src="/js/site/active.js"></script>
+    
+
+<script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 </body>
 </html>
