@@ -125,10 +125,12 @@
 								<div class="single-product">
 									<div class="product-img">
 										<a href="/id/{{$product->id}}">
-											@if(isset($product->attachment()->first()->url()))
+										@if($product->attachment()->first() !== null)
 											<img class="default-img" src="{{ $product->attachment()->first()->url() }}" alt="#">
-
+											@else 
+											<img style='width:263px; height:394px' class="default-img" src="no-image.png" alt="#">
 										@endif
+										
 																					
 										</a>
 									</div>
