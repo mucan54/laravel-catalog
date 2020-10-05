@@ -66,6 +66,16 @@
 			vertical-align: middle;
 			display: table-cell;
 		}
+
+		.product-image{
+			width: 262px;
+			height: 350px;
+		}
+
+		.default-image{
+			width: 262px;
+			height: 350px;
+		}
 	</style>
 	
 </head>

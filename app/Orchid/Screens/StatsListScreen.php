@@ -30,7 +30,7 @@ class StatsListScreen extends Screen
     public function query(): array
     {
         return [
-            'stats' => Stats::filters()->defaultSort('id')->paginate()
+            'stats' => Stats::orderBy('id', 'DESC')->filters()->defaultSort('created_at')->paginate()
         ];
     }
 
