@@ -94,9 +94,9 @@ class ProductsEditScreen extends Screen
 
                     TextArea::make('products.sku')
                     ->title('SKU')
-                    ->help('Her ürün için benzersiz olmalıdır.')
+                    ->help('Her ürün için benzersiz olmalıdır boşluk ve özel karakter içeremez!')
                     ->maxlength(200)
-                    ->placeholder('Brief description for preview'),
+                    ->placeholder('Örnek : D-101'),
                     Relation::make('products.category')
                     ->title('Kategori')
                     ->fromModel(Category::class, 'name'),
