@@ -125,8 +125,11 @@
 								<div class="single-product">
 									<div class="product-img">
 										<a href="/id/{{$product->id}}">
-										<img class="default-img" src="{{ if(isset($product->attachment()->first()->url())) $product->attachment()->first()->url() }}" alt="#">
-											
+											@if(isset($product->attachment()->first()->url()))
+											<img class="default-img" src="{{ $product->attachment()->first()->url() }}" alt="#">
+
+										@endif
+																					
 										</a>
 									</div>
 									<div class="myh3 product-content">
