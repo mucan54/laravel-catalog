@@ -16,7 +16,7 @@ class CreateStatsTable extends Migration
         Schema::create('stats', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->bigInteger('product_id')->nullable();
+            $table->string('product_id')->nullable();
             $table->bigInteger('user_id');
             $table->string('user_name');
             $table->string('product_name')->nullable();
