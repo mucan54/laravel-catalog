@@ -33,9 +33,5 @@ class StatsListLayout extends Table
         ];
     }
 
-    protected function textNotFound(): string
-{
-    return __('Ana Sayfa');
-}
 
 }
