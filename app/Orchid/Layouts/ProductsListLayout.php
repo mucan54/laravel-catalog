@@ -45,7 +45,10 @@ class ProductsListLayout extends Table
                 }),
                 TD::set('Ürün Resmi')
                 ->render(function (ModelsProducts $products) {
+                    if(isset($products->myhero->url))
                     return '<img src=\''.$products->myhero->url.'\' height=\'80px\'>';
+                    else
+                    return '';
                 }),
             TD::set('name', 'Ürün Adı')
                 ->render(function (ModelsProducts $post) {
