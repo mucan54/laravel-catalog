@@ -15,6 +15,7 @@ use Orchid\Screen\Fields\Upload;
 use Orchid\Support\Facades\Layout;
 use Orchid\Screen\Actions\Button;
 use Orchid\Support\Facades\Alert;
+use Orchid\Screen\Fields\SimpleMDE;
 
 class ProductsEditScreen extends Screen
 {
@@ -101,7 +102,7 @@ class ProductsEditScreen extends Screen
                     ->title('Kategori')
                     ->fromModel(Category::class, 'name'),
 
-                    Quill::make('products.body')
+                    SimpleMDE::make('products.body')
                     ->title('Ürün Açıklaması'),
                     ]),
                 ],
