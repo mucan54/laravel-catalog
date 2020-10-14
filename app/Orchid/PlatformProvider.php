@@ -32,9 +32,9 @@ class PlatformProvider extends OrchidServiceProvider
                 ->icon('layers')
                 ->route('platform.products.list'),
 
-                ItemMenu::label('Kategoriler')
+                ItemMenu::label('Özellikler')
                 ->icon('docs')
-                ->route('platform.category.list'),
+                ->route('platform.attribute.list'),
 
                 ItemMenu::label('Kullanıcılar')
                 ->title('Kullanıcı Ayarları')

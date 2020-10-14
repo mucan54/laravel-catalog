@@ -3,8 +3,8 @@
 namespace App\Orchid\Screens;
 
 use Orchid\Screen\Screen;
-use App\Models\Category;
 use App\Models\Products;
+use App\Models\AttributeValue;
 use Illuminate\Http\Request;
 use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Fields\Quill;
@@ -16,6 +16,8 @@ use Orchid\Support\Facades\Layout;
 use Orchid\Screen\Actions\Button;
 use Orchid\Support\Facades\Alert;
 use Orchid\Screen\Fields\SimpleMDE;
+use App\Http\Controllers\Relation as MyRelation;
+use App\Models\Attribute;
 
 class ProductsEditScreen extends Screen
 {
@@ -85,6 +87,22 @@ class ProductsEditScreen extends Screen
      */
     public function layout(): array
     {
+
+        $attributes=Attribute::all();
+        $posteditor=[];
+
+        foreach($attributes as $post){
+
+            $posteditor[]=MyRelation::make('products.attributevalues.')
+                    ->fromModel(AttributeValue::class, 'name')
+                    ->applyMyScope('attribute_id')
+                    ->scopeParameters($post->id)
+                    ->title($post->name)
+                    ->multiple();
+
+        }
+
+
         return [
             Layout::tabs([
                 'Ürün Bilgileri' => [
@@ -98,14 +116,14 @@ class ProductsEditScreen extends Screen
                     ->help('Her ürün için benzersiz olmalıdır boşluk ve özel karakter içeremez!')
                     ->maxlength(200)
                     ->placeholder('Örnek : D-101'),
-                    Relation::make('products.category')
-                    ->title('Kategori')
-                    ->fromModel(Category::class, 'name'),
 
                     SimpleMDE::make('products.body')
                     ->title('Ürün Açıklaması'),
                     ]),
                 ],
+
+                'Ürün Özellikleri' => Layout::rows($posteditor),
+
                     'Ürün Görselleri' => [
                         Layout::rows([
                    
@@ -131,6 +149,7 @@ class ProductsEditScreen extends Screen
         $post->attachment()->syncWithoutDetaching(
             $request->input('products.attachment', [])
         );
+        $post->attributevalues()->sync($request->input('products.attributevalues', []));
     
 
         Alert::info('You have successfully created an post.');

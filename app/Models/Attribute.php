@@ -8,38 +8,30 @@ use Orchid\Screen\AsSource;
 use Orchid\Attachment\Models\Attachment;
 use Orchid\Attachment\Attachable;
 use Orchid\Filters\Filterable;
-use App\Models\Category;
 
-class Products extends Model
+class Attribute extends Model
 {
     use AsSource, Attachable, Filterable;
 
+    protected $table = 'attribute';
+
     protected $fillable = [
         'name',
-        'sku',
-        'body',
-        'hero'
+        'order'
     ];
 
     protected $allowedFilters = [
         'name',
-        'sku'
+        'order'
     ];
 
     protected $allowedSorts = [
         'name',
-        'sku'
+        'order'
     ];
-
-    public function myhero()
-    {
-
-        return $this->hasOne(Attachment::class, 'id', 'hero');
-    }
-
 
     public function attributevalues()
     {
-        return $this->belongsToMany('App\Models\AttributeValue','attributevalue_product','product_id','attributevalue_id');
+        return $this->hasMany('App\Models\AttributeValue');
     }
 }

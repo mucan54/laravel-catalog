@@ -56,9 +56,6 @@ class ProductsListLayout extends Table
                         ->route('platform.products.edit', $post);
                 })->sort()->filter(TD::FILTER_TEXT),
             TD::set('sku', 'SKU')->sort()->filter(TD::FILTER_TEXT),
-            TD::set('Kategori')->render(function (ModelsProducts $products) {
-                return $products->cat->name;
-            })->sort()->filter(TD::FILTER_TEXT),
             TD::set('created_at', 'Eklenme T.')->sort(),
             TD::set('updated_at', 'Düzenlenme T.')->sort(),
         ];
