@@ -128,7 +128,12 @@
                         </div>
                     </div>
                 
-                    <div class="col-sm-3" style='background: rgba(220, 140, 246, 0.03);'><h1 style='text-align:center; padding:10px; background: beige;' >{{$projects->name}}</h1>{!! $projects->body !!} </div>
+					<div class="col-sm-3" style='background: rgba(220, 140, 246, 0.03);'><h1 style='text-align:center; padding:10px; background: beige;' >{{$projects->name}}</h1>
+						{!! $projects->body !!} 
+					<hr>
+					@include('attributes')
+					</div>
+						
                 <div class="row"></div>
 			</div>
 		</section>
@@ -191,6 +196,35 @@
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
 <script>
+	$(document).ready(function() {
+  $('.img.nomobile').each(function() {
+      var currentImage = $(this);
+      currentImage.wrap("<a class='image-link' href='" + currentImage.attr("src") + "'</a>");
+  });
+  $('.image-link').magnificPopup({
+	gallery: {
+      enabled: true
+	},  
+	zoom: {
+    enabled: true, // By default it's false, so don't forget to enable it
+
+    duration: 300, // duration of the effect, in milliseconds
+    easing: 'ease-in-out', // CSS transition easing function
+
+    // The "opener" function should return the element from which popup will be zoomed in
+    // and to which popup will be scaled down
+    // By defailt it looks for an image tag:
+    opener: function(openerElement) {
+      // openerElement is the element on which popup was initialized, in this case its <a> tag
+      // you don't need to add "opener" option if this code matches your needs, it's defailt one.
+      return openerElement.is('img') ? openerElement : openerElement.find('img');
+    }
+  },
+	verticalFit: true, 
+	type:'image'});  
+});
+
+
     var mySwiper = new Swiper('.swiper-container', {
       // Optional parameters
       direction: 'horizontal',

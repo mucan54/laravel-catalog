@@ -67,7 +67,7 @@
 			display: table-cell;
 		}
 
-		.product-image{
+		.product-img{
 			height: 394px;
 			display: flex;
 			width: 262px;
