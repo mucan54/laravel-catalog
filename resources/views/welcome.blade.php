@@ -83,6 +83,22 @@
 		.link::before{
 			content: 'x    ';
 		}
+
+		.accordion{
+			background-color: aliceblue;
+		}
+		@media only screen and (max-width: 750px) {
+            #cats{
+                display: none;
+            }
+        }
+
+		@media only screen and (min-width: 750px) {
+			.accordion{
+				display: none;
+			}
+		}
+
 	</style>
 	
 </head>
@@ -112,9 +128,13 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-3 col-md-4 col-12">
+						
 						<div class="shop-sidebar">
+							
 								<!-- Single Widget -->
 								<div class="single-widget category">
+									<div class="accordion"><h3 class="title">+ MENU</h3></div>
+									<div id="cats">
 									@php
 									$val=[];
 									if(app('request')->input('str') !== null)
@@ -127,9 +147,6 @@
 											array_push($val,app('request')->input('str'));
 										}
 									}
-
-									
-									
 									@endphp
 									
 									@foreach($attribute as $s_attr)
@@ -141,7 +158,6 @@
 										$buff=$val;
 										$pos = array_search($cat->id, $buff);
 										unset($buff[$pos]);
-								
 											@endphp
 											<li><a class='link' href="{!! route('products',['str'=>implode("-", $buff),'search'=>app('request')->input('search')]) !!}">{{$cat->name}}</a></li>
 										
@@ -153,6 +169,7 @@
 									<br />
 									<br />
 										@endforeach
+									</div>
 								</div>
 								<!--/ End Single Widget -->
 								<!-- Shop By Price -->
@@ -252,5 +269,13 @@
 	<script src="/js/site/easing.js"></script>
 	<!-- Active JS -->
 	<script src="/js/site/active.js"></script>
+	<script>
+
+	$(document).ready(function () {
+		$('.accordion').on('click', function () {
+			$('#cats').slideToggle(500);
+		});
+	});
+	</script>
 </body>
 </html>

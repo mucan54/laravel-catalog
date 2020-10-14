@@ -113,7 +113,7 @@
                             <div class="swiper-wrapper">
                                 <!-- Slides -->
                                 @foreach($projects->attachment()->get() as $item)
-                                <div class="swiper-slide"><img class='img' src="{{ $item->url }}"></div>
+                                <div class="swiper-slide"><img style='max-width:100%;' src="{{ $item->url }}"></div>
                                  @endforeach
                             </div>
                             <!-- If we need pagination -->
@@ -194,7 +194,8 @@
     var mySwiper = new Swiper('.swiper-container', {
       // Optional parameters
       direction: 'horizontal',
-      loop: true,
+	  loop: true,
+	  autoHeight: true, 
     
       // If we need pagination
       pagination: {

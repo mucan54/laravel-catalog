@@ -37,6 +37,25 @@ padding: 5px;
     </style>
 </head>
 
+    
+    
+    <div class="middle-inner">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-2 col-12">
+                    <!-- Logo -->
+                    <div class="logo">
+                        <h3>Rosetta Stone Atelier</h3>
+                    </div>
+                   
+                    </div>
+                
+            
+                    
+               
+            </div>
+        </div>
+    </div>
 <div class="container">
     @if($projects->myhero)
     <div class="row"><img style='width: 100%;height: 100%;padding-bottom: 100px;' src="{{ $projects->myhero->url }}"></div>
@@ -52,7 +71,7 @@ padding: 5px;
                 <div class="swiper-wrapper">
                     <!-- Slides -->
                     @foreach($projects->attachment()->get() as $item)
-                    <div class="swiper-slide"><img class='img' src="{{ $item->url }}"></div>
+                    <div class="swiper-slide"><img style='max-width:100%;' src="{{ $item->url }}"></div>
                      @endforeach
                 </div>
                 <!-- If we need pagination -->
@@ -75,7 +94,7 @@ var mySwiper = new Swiper('.swiper-container', {
   // Optional parameters
   direction: 'horizontal',
   loop: true,
-
+  autoHeight: true, 
   // If we need pagination
   pagination: {
     el: '.swiper-pagination',
