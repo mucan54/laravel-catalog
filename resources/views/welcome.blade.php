@@ -68,8 +68,11 @@
 		}
 
 		.product-image{
+			height: 394px;
+			display: flex;
 			width: 262px;
-			height: 350px;
+			align-items: center;
+			overflow: hidden;
 		}
 
 		.default-image{
