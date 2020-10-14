@@ -105,6 +105,13 @@ class CustomerEditScreen extends Screen
 
     public function createOrUpdate(Customer $post, Request $request)
     {
+        $request->validate([
+            'customer.username' => 'required|alpha_dash|unique:customer,username,'.$post->id,
+            'customer.password' => 'required|alpha_dash|unique:customer,password,'.$post->id,
+            'customer.name' => 'required',
+            'customer.email' => 'required',
+        ]);
+
         $post->fill($request->get('customer'))->save();
 
         Alert::info('You have successfully created an post.');

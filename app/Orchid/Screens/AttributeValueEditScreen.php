@@ -120,6 +120,10 @@ class AttributeValueEditScreen extends Screen
 
     public function createOrUpdate(AttributeValue $post, Request $request)
     {
+        $request->validate([
+            'attributevalue.name' => 'required',
+        ]);
+
         $post->fill($request->get('attributevalue'))->save();
 
         Alert::info('You have successfully created an post.');

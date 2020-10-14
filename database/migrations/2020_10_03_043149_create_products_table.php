@@ -18,7 +18,6 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->string('sku')->unique();
             $table->text('body');
-            $table->bigInteger('category');
             $table->timestamps();
         });
     }

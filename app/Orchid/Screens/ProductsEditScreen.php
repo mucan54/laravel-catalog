@@ -36,6 +36,8 @@ class ProductsEditScreen extends Screen
      */
     public $description = 'Ürün Ekleme Ekranı';
 
+
+
     /**
      * Query data.
      *
@@ -144,6 +146,12 @@ class ProductsEditScreen extends Screen
 
     public function createOrUpdate(Products $post, Request $request)
     {
+        $request->validate([
+            'products.name' => 'required',
+            'products.sku' => 'required|alpha_dash|unique:products,sku,'.$post->id,
+            'products.body' => 'required',
+        ]);
+
         $post->fill($request->get('products'))->save();
         $post->attachment()->syncWithoutDetaching(
             $request->input('products.attachment', [])

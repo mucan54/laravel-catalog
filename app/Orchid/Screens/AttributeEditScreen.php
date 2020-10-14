@@ -114,6 +114,11 @@ class AttributeEditScreen extends Screen
 
     public function createOrUpdate(Attribute $post, Request $request)
     {
+        $request->validate([
+            'attribute.name' => 'required',
+            'attribute.order' => 'required|digits',
+        ]);
+
         $post->fill($request->get('attribute'))->save();
 
         Alert::info('You have successfully created an post.');
