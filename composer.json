@@ -7,6 +7,12 @@
         "laravel"
     ],
     "license": "MIT",
+    "repositories": [
+        {
+            "type": "vcs",
+            "url":  "git@github.com:mucan54/platform.git"
+        }
+    ],
     "require": {
         "php": "^7.3",
         "fideloper/proxy": "^4.2",
@@ -15,7 +21,8 @@
         "intervention/image": "^2.5",
         "laravel/framework": "^8.0",
         "laravel/tinker": "^2.0",
-        "orchid/platform": "^9.0",
+        "league/flysystem-aws-s3-v3": "^1.0",
+        "mucan54/platform": "dev-master",
         "simplesoftwareio/simple-qrcode": "~3",
         "spatie/laravel-image-optimizer": "^1.6",
         "werneckbh/laravel-qr-code": "^0.1.3"

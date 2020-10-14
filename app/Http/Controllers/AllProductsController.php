@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Products;
 use App\Models\Category;
+use App\Models\Attribute;
 
 class AllProductsController extends Controller
 {
@@ -21,6 +22,7 @@ class AllProductsController extends Controller
 
 
         $cat='';
+        $attr='';
         if($this->request->query('cat')!==null){
 
             $cat = Category::where('id',$this->request->query('cat') )->first()->name;
@@ -37,12 +39,12 @@ class AllProductsController extends Controller
         }
         else
         $products = Products::latest();
-        $category = Category::all();
+        $attribute = Attribute::all();
 
         $products=$products->paginate(9)->onEachSide(3);
 
 
-        return view('welcome', compact('products','category','cat'));
+        return view('welcome', compact('products','attribute','cat'));
 
     }
 }

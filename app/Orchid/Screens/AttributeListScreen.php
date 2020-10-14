@@ -45,7 +45,7 @@ class AttributeListScreen extends Screen
         return [
             Link::make('Yeni Ekle')
                 ->icon('pencil')
-                ->route('platform.customer.edit')
+                ->route('platform.attribute.edit')
         ];
     }
 

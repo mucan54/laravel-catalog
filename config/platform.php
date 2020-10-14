@@ -121,7 +121,7 @@ return [
     */
 
     'attachment' => [
-        'disk'      => 'public',
+        'disk'      => 's3',
         'generator' => \Orchid\Attachment\Engines\Generator::class,
     ],
 

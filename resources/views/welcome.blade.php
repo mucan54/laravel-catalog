@@ -108,12 +108,16 @@
 						<div class="shop-sidebar">
 								<!-- Single Widget -->
 								<div class="single-widget category">
-									<h3 class="title">Kategoriler</h3>
+									@foreach($attribute as $s_attr)
+								<h3 class="title">{{ $s_attr->name }}</h3>
 									<ul class="categor-list">
-										@foreach($category as $cat)
+										@foreach($s_attr->attributevalues as $cat)
 									    <li><a href="{!! route('products',['cat'=>$cat->id,'search'=>app('request')->input('search')]) !!}">{{$cat->name}}</a></li>
 										@endforeach
 									</ul>
+									<br />
+									<br />
+										@endforeach
 								</div>
 								<!--/ End Single Widget -->
 								<!-- Shop By Price -->
