@@ -22,6 +22,8 @@ use App\Orchid\Screens\ProductsEditScreen;
 use App\Orchid\Screens\ProductsListScreen;
 use App\Orchid\Screens\AttributeEditScreen;
 use App\Orchid\Screens\AttributeListScreen;
+use App\Orchid\Screens\AttributeValueEditScreen;
+use App\Orchid\Screens\AttributeValueListScreen;
 use App\Orchid\Screens\CategoryEditScreen;
 use App\Orchid\Screens\CategoryListScreen;
 use App\Orchid\Screens\CustomerEditScreen;
@@ -142,11 +144,19 @@ Route::screen('category', CategoryListScreen::class)
 
 
 //ATTRIBUTE
-Route::screen('attribute/{post?}', CategoryEditScreen::class)
+Route::screen('attribute/{post?}', AttributeEditScreen::class)
 ->name('platform.attribute.edit');
 
-Route::screen('attributes', CategoryListScreen::class)
+Route::screen('attributes', AttributeListScreen::class)
 ->name('platform.attribute.list');
+
+
+//ATTRIBUTEVALUE
+Route::screen('attributevalue/{post?}', AttributeValueEditScreen::class)
+->name('platform.attributevalue.edit');
+
+Route::screen('attributevalues', AttributeValueListScreen::class)
+->name('platform.attributevalue.list');
 
 
 

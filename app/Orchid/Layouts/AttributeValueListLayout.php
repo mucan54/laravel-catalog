@@ -28,9 +28,13 @@ class AttributeValueListLayout extends Table
     {
         return [            
             TD::set('name', 'Title')
-        ->render(function (Attribute $post) {
+        ->render(function (AttributeValue $post) {
             return Link::make($post->name)
-                ->route('platform.attribute.edit', $post);
+                ->route('platform.attributevalue.edit', $post);
+        }),
+        TD::set('attribute', 'Parent')
+        ->render(function (AttributeValue $post) {
+            return $post->attribute->name;
         }),
 
     TD::set('created_at', 'Created'),
