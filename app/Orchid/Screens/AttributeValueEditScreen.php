@@ -63,9 +63,7 @@ class AttributeValueEditScreen extends Screen
                 ->method('createOrUpdate')
                 ->canSee(!$this->exists),
 
-                Button::make('Geri Dön')
-                ->icon('arrow-left-circle')
-                ->method('back'),
+                
 
             Button::make('Güncelle')
                 ->icon('note')
@@ -76,6 +74,9 @@ class AttributeValueEditScreen extends Screen
                 ->icon('trash')
                 ->method('remove')
                 ->canSee($this->exists),
+                Button::make('Geri Dön')
+                ->icon('arrow-left-circle')
+                ->method('back'),
         ];
     }
 
@@ -94,7 +95,7 @@ class AttributeValueEditScreen extends Screen
                     ->placeholder('Değer Adı')
                     ->help('Özellik Değeri Adı.'),
 
-                    Relation::make('attributevalue.attribute')
+                    Relation::make('attributevalue.attribute_id')
                     ->fromModel(Attribute::class, 'name')
                     ->title('Bağlı Olduğu Özellik')
                     ->help('Değerin hangi özellik altında görünmesini belirlerin'),
@@ -117,11 +118,11 @@ class AttributeValueEditScreen extends Screen
 
     public function createOrUpdate(AttributeValue $post, Request $request)
     {
-        $post->fill($request->get('attribute'))->save();
+        $post->fill($request->get('attributevalue'))->save();
 
         Alert::info('You have successfully created an post.');
 
-        $this->back();
+        return $this->back($request);
     }
 
     /**
@@ -130,13 +131,13 @@ class AttributeValueEditScreen extends Screen
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Exception
      */
-    public function remove(AttributeValue $post)
+    public function remove(AttributeValue $post, Request $request)
     {
         $post->delete()
             ? Alert::info('You have successfully deleted the post.')
             : Alert::warning('An error has occurred')
         ;
 
-        $this->back();
+        return $this->back($request);
     }
 }

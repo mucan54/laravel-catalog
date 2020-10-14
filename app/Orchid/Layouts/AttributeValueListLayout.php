@@ -29,18 +29,18 @@ class AttributeValueListLayout extends Table
     {
 
         return [            
-            TD::set('name', 'Title')
+            TD::set('name', 'Özellik Değeri')
         ->render(function (AttributeValue $post) {
             return Link::make($post->name)
                 ->route('platform.attributevalue.edit', [$post,'attribute'=>isset(request()->query()['filter']['attribute_id'])?request()->query()['filter']['attribute_id']:'']);
-        }),
-        TD::set('attribute', 'Parent')
+        })->sort()->filter(TD::FILTER_TEXT),
+        TD::set('attribute.name', 'Bağlı Olduğu Özellik')
         ->render(function (AttributeValue $post) {
             return $post->attribute->name;
-        }),
+        })->sort()->filter(TD::FILTER_TEXT),
 
-    TD::set('created_at', 'Created'),
-    TD::set('updated_at', 'Last edit'),
+        TD::set('created_at', 'Eklenme T.'),
+        TD::set('updated_at', 'Düzenlenme T.'),
 ];
     }
 }

@@ -16,7 +16,8 @@ class AttributeValue extends Model
     protected $table = 'attributevalue';
 
     protected $fillable = [
-        'name'
+        'name',
+        'attribute_id'
     ];
 
     protected $allowedFilters = [

@@ -6,6 +6,7 @@ use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Screen;
 use App\Orchid\Layouts\AttributeValueListLayout;
 use App\Models\AttributeValue;
+use Illuminate\Http\Request;
 use Orchid\Screen\Actions\Button;
 
 class AttributeValueListScreen extends Screen
@@ -44,12 +45,13 @@ class AttributeValueListScreen extends Screen
     public function commandBar(): array
     {
         return [
-            Button::make('Geri Dön')
+
+                Button::make('Yeni Ekle')
+                ->icon('pencil')
+                ->method('new'),
+                Button::make('Geri Dön')
                 ->icon('arrow-left-circle')
                 ->method('back'),
-            Link::make('Yeni Ekle')
-                ->icon('pencil')
-                ->route('platform.attributevalue.edit'),
                 
         ];
     }
@@ -58,6 +60,20 @@ class AttributeValueListScreen extends Screen
     public function back(){
 
         return redirect()->route('platform.attribute.list');
+    }
+
+    public function new(Request $request){
+
+        if(isset(parse_url($request->headers->get('referer'))['query']))
+        {
+            $val = explode('=',parse_url($request->headers->get('referer'))['query'])[1];
+            return redirect()->route('platform.attributevalue.edit',['filter[attribute_id]'=>$val]);
+        }
+        else
+        return redirect()->route('platform.attributevalue.edit');
+        dd(request()->query());
+
+        return redirect()->route('platform.attributevalue.edit', ['attribute'=>isset(request()->query()['filter']['attribute_id'])?request()->query()['filter']['attribute_id']:'']);
     }
 
     /**

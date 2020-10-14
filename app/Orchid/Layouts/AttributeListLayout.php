@@ -27,14 +27,14 @@ class AttributeListLayout extends Table
     protected function columns(): array
     {
         return [
-            TD::set('name', 'Title')
+            TD::set('name', 'Özellik Adı')
             ->render(function (Attribute $post) {
                 return Link::make($post->name)
                     ->route('platform.attribute.edit', $post);
-            }),
+            })->sort()->filter(TD::FILTER_TEXT),
 
-        TD::set('created_at', 'Created'),
-        TD::set('updated_at', 'Last edit'),
+        TD::set('created_at', 'Eklenme T.'),
+        TD::set('updated_at', 'Düzenlenme T.'),
 
         ];
     }
