@@ -23,14 +23,14 @@ class AttributeValueEditScreen extends Screen
      *
      * @var string
      */
-    public $name = 'AttributeValueEditScreen';
+    public $name = 'Özellik Değeri Düzenleme Ekranı';
 
     /**
      * Display header description.
      *
      * @var string
      */
-    public $description = 'AttributeValueEditScreen';
+    public $description = 'Özellik değeri oluşturabilir ve düzenleyebilirsiniz.';
 
     /**
      * Query data.
@@ -42,7 +42,7 @@ class AttributeValueEditScreen extends Screen
         $this->exists = $post->exists;
 
         if($this->exists){
-            $this->name = 'Edit post';
+            $this->name = 'Özellik Değeri Düzenle';
         }
 
         return [
@@ -58,10 +58,14 @@ class AttributeValueEditScreen extends Screen
     public function commandBar(): array
     {
         return [
-            Button::make('Kullanıcı Oluştur')
+            Button::make('Özellik Değeri Oluştur')
                 ->icon('pencil')
                 ->method('createOrUpdate')
                 ->canSee(!$this->exists),
+
+                Button::make('Geri Dön')
+                ->icon('arrow-left-circle')
+                ->method('back'),
 
             Button::make('Güncelle')
                 ->icon('note')
@@ -75,6 +79,7 @@ class AttributeValueEditScreen extends Screen
         ];
     }
 
+
     /**
      * Views.
      *
@@ -85,16 +90,29 @@ class AttributeValueEditScreen extends Screen
         return [
             Layout::rows([
                 Input::make('attributevalue.name')
-                    ->title('Kullanıcı ID')
-                    ->placeholder('kullanici-adi')
-                    ->help('Kullanıcıya ait benzersiz bir id olmalıdır.'),
+                    ->title('Özellik Değeri Adı')
+                    ->placeholder('Değer Adı')
+                    ->help('Özellik Değeri Adı.'),
 
                     Relation::make('attributevalue.attribute')
                     ->fromModel(Attribute::class, 'name')
+                    ->title('Bağlı Olduğu Özellik')
+                    ->help('Değerin hangi özellik altında görünmesini belirlerin'),
 
             ]),
        
         ];
+    }
+
+    public function back(Request $request){
+
+        if(isset(parse_url($request->headers->get('referer'))['query']))
+        {
+            $val = explode('=',parse_url($request->headers->get('referer'))['query'])[1];
+            return redirect()->route('platform.attributevalue.list',['filter[attribute_id]'=>$val]);
+        }
+        else
+        return redirect()->route('platform.attributevalue.list');
     }
 
     public function createOrUpdate(AttributeValue $post, Request $request)
@@ -103,7 +121,7 @@ class AttributeValueEditScreen extends Screen
 
         Alert::info('You have successfully created an post.');
 
-        return redirect()->route('platform.attribute.list');
+        $this->back();
     }
 
     /**
@@ -119,6 +137,6 @@ class AttributeValueEditScreen extends Screen
             : Alert::warning('An error has occurred')
         ;
 
-        return redirect()->route('platform.attribute.list');
+        $this->back();
     }
 }

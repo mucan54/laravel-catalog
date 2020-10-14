@@ -23,14 +23,15 @@ class AttributeEditScreen extends Screen
      *
      * @var string
      */
-    public $name = 'AttributeEditScreen';
+    public $name = 'Özellik Düzenleme Ekranı';
+
 
     /**
      * Display header description.
      *
      * @var string
      */
-    public $description = 'AttributeEditScreen';
+    public $description = 'Özelikleri düzenleyebilir yeni oluşturabilirsiniz.';
 
     /**
      * Query data.
@@ -42,7 +43,7 @@ class AttributeEditScreen extends Screen
         $this->exists = $post->exists;
 
         if($this->exists){
-            $this->name = 'Edit post';
+            $this->name = 'Özellik Düzenle';
         }
 
         return [
@@ -57,11 +58,18 @@ class AttributeEditScreen extends Screen
      */
     public function commandBar(): array
     {
+
+
         return [
-            Button::make('Kullanıcı Oluştur')
+            Button::make('Özellik Oluştur')
                 ->icon('pencil')
                 ->method('createOrUpdate')
                 ->canSee(!$this->exists),
+
+                Button::make('Seçenekleri Düzenle')
+                ->icon('list')
+                ->method('createValue')
+                ->canSee($this->exists),
 
             Button::make('Güncelle')
                 ->icon('note')
@@ -85,17 +93,23 @@ class AttributeEditScreen extends Screen
         return [
             Layout::rows([
                 Input::make('attribute.name')
-                    ->title('Kullanıcı ID')
-                    ->placeholder('kullanici-adi')
-                    ->help('Kullanıcıya ait benzersiz bir id olmalıdır.'),
+                    ->title('Özellik Adı')
+                    ->help('Özelliğin adı.'),
 
                 Input::make('attribute.order')
-                    ->title('Kullanıcı Adı')
-                    ->placeholder('Kullanıcı Adı'),
+                    ->title('Menu Sırası')
+                    ->placeholder('Sayı Olmalıdır.')
+                    ->help('Menuler sıralanırken kaçıncı sırada yer alacağı.'),
 
             ]),
        
         ];
+    }
+
+    public function createValue(Attribute $post){
+
+        session(['attribute_id' => $post->id]);
+        return redirect(route('platform.attributevalue.list').'?filter[attribute_id]='.$post->id);
     }
 
     public function createOrUpdate(Attribute $post, Request $request)

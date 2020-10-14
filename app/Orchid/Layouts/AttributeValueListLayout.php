@@ -6,6 +6,7 @@ use Orchid\Screen\TD;
 use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Layouts\Table;
 use App\Models\AttributeValue;
+use Illuminate\Http\Request;
 
 class AttributeValueListLayout extends Table
 {
@@ -26,11 +27,12 @@ class AttributeValueListLayout extends Table
      */
     protected function columns(): array
     {
+
         return [            
             TD::set('name', 'Title')
         ->render(function (AttributeValue $post) {
             return Link::make($post->name)
-                ->route('platform.attributevalue.edit', $post);
+                ->route('platform.attributevalue.edit', [$post,'attribute'=>isset(request()->query()['filter']['attribute_id'])?request()->query()['filter']['attribute_id']:'']);
         }),
         TD::set('attribute', 'Parent')
         ->render(function (AttributeValue $post) {

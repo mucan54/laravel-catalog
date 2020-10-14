@@ -14,14 +14,14 @@ class AttributeListScreen extends Screen
      *
      * @var string
      */
-    public $name = 'AttributeListScreen';
+    public $name = 'Özellikler Ekranı';
 
     /**
      * Display header description.
      *
      * @var string
      */
-    public $description = 'AttributeListScreen';
+    public $description = 'Yeni özellik ekleyip, düzenleyebilirsiniz.';
 
     /**
      * Query data.
