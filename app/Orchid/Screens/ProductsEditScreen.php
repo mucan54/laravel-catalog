@@ -118,7 +118,7 @@ class ProductsEditScreen extends Screen
                     ->maxlength(200)
                     ->placeholder('Örnek : D-101'),
 
-                    SimpleMDE::make('products.body')
+                    Quill::make('products.body')
                     ->title('Ürün Açıklaması'),
                     ]),
                 ],
