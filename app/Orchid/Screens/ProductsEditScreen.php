@@ -10,6 +10,7 @@ use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Fields\Quill;
 use Orchid\Screen\Fields\Relation;
 use Orchid\Screen\Fields\Cropper;
+use Orchid\Screen\Fields\Select;
 use Orchid\Screen\Fields\TextArea;
 use Orchid\Screen\Fields\Upload;
 use Orchid\Support\Facades\Layout;
@@ -93,10 +94,8 @@ class ProductsEditScreen extends Screen
 
         foreach($attributes as $post){
 
-            $posteditor[]=MyRelation::make('products.attributevalues.')
-                    ->fromModel(AttributeValue::class, 'name')
-                    ->applyMyScope('attribute_id')
-                    ->scopeParameters($post->id)
+            $posteditor[]=Select::make('products.attributevalues.')
+                    ->fromQuery(AttributeValue::where('attribute_id', '=', $post->id), 'name')
                     ->title($post->name)
                     ->multiple();
 

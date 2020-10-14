@@ -23,19 +23,20 @@ class AllProductsController extends Controller
 
         $cat='';
         $attr='';
-        if($this->request->query('cat')!==null){
 
-            $cat = Category::where('id',$this->request->query('cat') )->first()->name;
-        }
-
-        if($this->request->query('search')!==null || $this->request->query('cat')!==null){
+        if($this->request->query('search')!==null || $this->request->query('str')!==null){
             
             $products = Products::query();
             if ($this->request->query('search')!==null)
                 $products = $products->where('name', 'like', '%'.$this->request->query('search').'%');
 
-            if ($this->request->query('cat')!==null) 
-                $products = $products->where('category', $this->request->query('cat'));
+            if ($this->request->query('str')!==null){ 
+                $parameter=explode('-', $this->request->query('str'));
+                $products = $products->whereHas('attributevalues', function($q) use($parameter) {
+                    $q->whereIn('attributevalue.id', $parameter);
+
+                });
+            }
         }
         else
         $products = Products::latest();
@@ -44,7 +45,7 @@ class AllProductsController extends Controller
         $products=$products->paginate(9)->onEachSide(3);
 
 
-        return view('welcome', compact('products','attribute','cat'));
+        return view('welcome', compact('products','attribute'));
 
     }
 }

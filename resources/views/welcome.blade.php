@@ -78,6 +78,7 @@
 		}
 		.link{
 			font-weight:800 !important;
+			color: rgb(15, 33, 230) !important;
 		}
 		.link::before{
 			content: 'x    ';
@@ -137,11 +138,12 @@
 										@foreach($s_attr->attributevalues as $cat)
 										@if (in_array($cat->id, $val))
 										@php
-										$pos = array_search($cat->id, $val);
-										unset($val[$pos]);
+										$buff=$val;
+										$pos = array_search($cat->id, $buff);
+										unset($buff[$pos]);
 								
 											@endphp
-											<li><a class='link' href="{!! route('products',['str'=>implode("-", $val),'search'=>app('request')->input('search')]) !!}">{{$cat->name}}</a></li>
+											<li><a class='link' href="{!! route('products',['str'=>implode("-", $buff),'search'=>app('request')->input('search')]) !!}">{{$cat->name}}</a></li>
 										
 											@else
 										<li><a href="{!! route('products',['str'=>app('request')->input('str')?app('request')->input('str').'-'.$cat->id:$cat->id,'search'=>app('request')->input('search')]) !!}">{{$cat->name}}</a></li>
