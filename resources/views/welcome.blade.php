@@ -73,6 +73,7 @@
 			width: 262px;
 			align-items: center;
 			overflow: hidden;
+			margin: auto;
 		}
 
 		.default-image{
