@@ -116,7 +116,7 @@ class AttributeEditScreen extends Screen
     {
         $request->validate([
             'attribute.name' => 'required',
-            'attribute.order' => 'required|digits',
+            'attribute.order' => 'required|digits:10',
         ]);
 
         $post->fill($request->get('attribute'))->save();
