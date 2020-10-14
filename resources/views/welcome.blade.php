@@ -76,6 +76,12 @@
 			width: 262px;
 			height: 350px;
 		}
+		.link{
+			font-weight:800 !important;
+		}
+		.link::before{
+			content: 'x    ';
+		}
 	</style>
 	
 </head>
@@ -108,11 +114,38 @@
 						<div class="shop-sidebar">
 								<!-- Single Widget -->
 								<div class="single-widget category">
+									@php
+									$val=[];
+									if(app('request')->input('str') !== null)
+									{
+									 if (strpos(app('request')->input('str'), '-') !== FALSE)
+										{
+										  $val = explode("-",app('request')->input('str'));
+										}
+										else{
+											array_push($val,app('request')->input('str'));
+										}
+									}
+
+									
+									
+									@endphp
+									
 									@foreach($attribute as $s_attr)
 								<h3 class="title">{{ $s_attr->name }}</h3>
 									<ul class="categor-list">
 										@foreach($s_attr->attributevalues as $cat)
-									    <li><a href="{!! route('products',['cat'=>$cat->id,'search'=>app('request')->input('search')]) !!}">{{$cat->name}}</a></li>
+										@if (in_array($cat->id, $val))
+										@php
+										$pos = array_search($cat->id, $val);
+										unset($val[$pos]);
+								
+											@endphp
+											<li><a class='link' href="{!! route('products',['str'=>implode("-", $val),'search'=>app('request')->input('search')]) !!}">{{$cat->name}}</a></li>
+										
+											@else
+										<li><a href="{!! route('products',['str'=>app('request')->input('str')?app('request')->input('str').'-'.$cat->id:$cat->id,'search'=>app('request')->input('search')]) !!}">{{$cat->name}}</a></li>
+										@endif
 										@endforeach
 									</ul>
 									<br />
