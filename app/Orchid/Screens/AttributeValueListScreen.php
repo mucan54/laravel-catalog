@@ -71,7 +71,6 @@ class AttributeValueListScreen extends Screen
         }
         else
         return redirect()->route('platform.attributevalue.edit');
-        dd(request()->query());
 
         return redirect()->route('platform.attributevalue.edit', ['attribute'=>isset(request()->query()['filter']['attribute_id'])?request()->query()['filter']['attribute_id']:'']);
     }

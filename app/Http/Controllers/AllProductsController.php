@@ -40,7 +40,7 @@ class AllProductsController extends Controller
         }
         else
         $products = Products::latest();
-        $attribute = Attribute::all();
+        $attribute = Attribute::all()->sortBy("order");
 
         $products=$products->paginate(9)->onEachSide(3);
 

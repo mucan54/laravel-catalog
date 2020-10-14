@@ -10,6 +10,7 @@ use Orchid\Screen\Fields\Quill;
 use Orchid\Screen\Fields\Relation;
 use Orchid\Screen\Fields\TextArea;
 use Orchid\Screen\Fields\Upload;
+use Orchid\Screen\Fields\Select;
 use Orchid\Support\Facades\Layout;
 use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Screen;
@@ -88,19 +89,20 @@ class AttributeValueEditScreen extends Screen
      */
     public function layout(): array
     {
+        $elems=[];
+
+        $elem [] = Input::make('attributevalue.name')
+        ->title('Özellik Değeri Adı')
+        ->placeholder('Değer Adı')
+        ->help('Özellik Değeri Adı.');
+        if(isset(request()->query()['filter']['attribute_id']))
+        $elem [] =Select::make('attributevalue.attribute_id')
+        ->fromQuery(Attribute::where('id',request()->query()['filter']['attribute_id']), 'name')
+        ->title('Bağlı Olduğu Özellik')
+        ->help('Değerin hangi özellik altında görünmesini belirlerin');
+
         return [
-            Layout::rows([
-                Input::make('attributevalue.name')
-                    ->title('Özellik Değeri Adı')
-                    ->placeholder('Değer Adı')
-                    ->help('Özellik Değeri Adı.'),
-
-                    Relation::make('attributevalue.attribute_id')
-                    ->fromModel(Attribute::class, 'name')
-                    ->title('Bağlı Olduğu Özellik')
-                    ->help('Değerin hangi özellik altında görünmesini belirlerin'),
-
-            ]),
+            Layout::rows($elem)
        
         ];
     }
