@@ -154,7 +154,8 @@
 											<li><a class='link' href="{!! route('products',['str'=>$urlpars,'search'=>app('request')->input('search')]) !!}">{{$cat->name}}</a></li>
 										
 											@else
-											@php $urlpars = RouteFilter::urlNewParameter($s_attr->id,$cat->id, app('request')); @endphp
+											@php $urlpars = RouteFilter::urlNewParameter($s_attr->id,$cat->id, app('request')); 
+											@endphp
 										<li><a href="{!! route('products',['str'=>$urlpars,'search'=>app('request')->input('search')]) !!}">{{$cat->name}}</a></li>
 										@endif
 										@endforeach
