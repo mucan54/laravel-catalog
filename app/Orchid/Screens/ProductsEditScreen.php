@@ -166,6 +166,7 @@ class ProductsEditScreen extends Screen
 
     public function remove(Products $post)
     {
+        $post->attributevalues()->detach();
         $post->delete()
             ? Alert::info('You have successfully deleted the post.')
             : Alert::warning('An error has occurred')
