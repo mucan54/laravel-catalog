@@ -140,17 +140,7 @@
 									<div class="accordion"><h3 class="title">+ MENU</h3></div>
 									<div id="cats">
 									@php
-									$val=[];
-									if(app('request')->input('str') !== null)
-									{
-									 if (strpos(app('request')->input('str'), '-') !== FALSE)
-										{
-										  $val = explode("-",app('request')->input('str'));
-										}
-										else{
-											array_push($val,app('request')->input('str'));
-										}
-									}
+									$val=RouteFilter::valGenerator(app('request'));
 									@endphp
 									
 									@foreach($attribute as $s_attr)
