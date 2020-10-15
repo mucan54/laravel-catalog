@@ -14,14 +14,29 @@ class RouteFilter
         $val=[];
         if($req->input('str') !== null)
         {
-        if (strpos($req->input('str'), '-') !== FALSE)
-            {
-            $val = explode("-",$req->input('str'));
-            }
-            else{
-                array_push($val,$req->input('str'));
-            }
+            $val=unserialize(urldecode($req->input('str')));
         } 
         return $val;
+    }
+
+
+    public static function urlParameters($index, $parameter, $array){
+
+            $pos = array_search($parameter, $array[$index]);
+            unset($array[$index][$pos]);
+        
+        return urlencode(serialize($array));
+    }
+
+    public static function urlNewParameter($index, $parameter, $req){
+
+        $array=[];
+        if($req->input('str') !== null){
+
+            $array=unserialize(urldecode($req->input('str')));
+        } 
+        $array[$index][]=$parameter;
+
+        return urlencode(serialize($array));
     }
 }
