@@ -140,33 +140,23 @@
 									<div class="accordion"><h3 class="title">+ MENU</h3></div>
 									<div id="cats">
 									@php
-									$val=[];
-									if(app('request')->input('str') !== null)
-									{
-									 if (strpos(app('request')->input('str'), '-') !== FALSE)
-										{
-										  $val = explode("-",app('request')->input('str'));
-										}
-										else{
-											array_push($val,app('request')->input('str'));
-										}
-									}
+									$val=RouteFilter::valGenerator(app('request'));
 									@endphp
 									
 									@foreach($attribute as $s_attr)
 								<h3 class="title">{{ $s_attr->name }}</h3>
 									<ul class="categor-list">
 										@foreach($s_attr->attributevalues as $cat)
-										@if (in_array($cat->id, $val))
+										@if (isset($val[$s_attr->id]) && in_array($cat->id, $val[$s_attr->id]))
 										@php
-										$buff=$val;
-										$pos = array_search($cat->id, $buff);
-										unset($buff[$pos]);
-											@endphp
-											<li><a class='link' href="{!! route('products',['str'=>implode("-", $buff),'search'=>app('request')->input('search')]) !!}">{{$cat->name}}</a></li>
+										$urlpars=RouteFilter::urlParameters($s_attr->id,$cat->id, $val);
+										@endphp
+											<li><a class='link' href="{!! route('products',['str'=>$urlpars,'search'=>app('request')->input('search')]) !!}">{{$cat->name}}</a></li>
 										
 											@else
-										<li><a href="{!! route('products',['str'=>app('request')->input('str')?app('request')->input('str').'-'.$cat->id:$cat->id,'search'=>app('request')->input('search')]) !!}">{{$cat->name}}</a></li>
+											@php $urlpars = RouteFilter::urlNewParameter($s_attr->id,$cat->id, app('request')); 
+											@endphp
+										<li><a href="{!! route('products',['str'=>$urlpars,'search'=>app('request')->input('search')]) !!}">{{$cat->name}}</a></li>
 										@endif
 										@endforeach
 									</ul>

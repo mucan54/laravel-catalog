@@ -30,12 +30,24 @@ class AllProductsController extends Controller
             if ($this->request->query('search')!==null)
                 $products = $products->where('name', 'like', '%'.$this->request->query('search').'%');
 
-            if ($this->request->query('str')!==null){ 
-                $parameter=explode('-', $this->request->query('str'));
-                $products = $products->whereHas('attributevalues', function($q) use($parameter) {
-                    $q->whereIn('attributevalue.id', $parameter);
+            // if ($this->request->query('str')!==null){ 
+            //     $parameter=explode('-', $this->request->query('str'));
+            //     $products = $products->whereHas('attributevalues', function($q) use($parameter) {
+            //         $q->whereIn('attributevalue.id', $parameter);
 
+            //     });
+            // }
+
+            if ($this->request->query('str')!==null){ 
+                $filters = unserialize(urldecode($this->request->query('str')));
+                foreach($filters as $key=>$items ){
+                    if(count($items)==0)
+                        continue;
+                    $products = $products->whereHas('attributevalues', function($q) use($key, $items) {
+                    $q->whereIn('attributevalue.id', $items)
+                    ->where('attributevalue.attribute_id', $key); 
                 });
+                }
             }
         }
         else
