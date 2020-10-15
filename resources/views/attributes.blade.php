@@ -1,4 +1,8 @@
 
 @foreach($projects->attributevalues as $cat)
-<li>{{$cat->attribute->name}} : {{$cat->name}}</li>
+<li>
+    @if($cat->attribute)
+    {{$cat->attribute->name}}
+    @endif
+    {{$cat->name}}</li>
 @endforeach 
