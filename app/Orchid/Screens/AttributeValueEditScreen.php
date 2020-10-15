@@ -139,10 +139,13 @@ class AttributeValueEditScreen extends Screen
      */
     public function remove(AttributeValue $post, Request $request)
     {
+
+        $post->products()->detach();
         $post->delete()
             ? Alert::info('You have successfully deleted the post.')
             : Alert::warning('An error has occurred')
         ;
+
 
         return $this->back($request);
     }

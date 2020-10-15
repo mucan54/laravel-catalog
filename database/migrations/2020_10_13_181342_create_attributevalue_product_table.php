@@ -18,6 +18,8 @@ class CreateAttributevalueProductTable extends Migration
             $table->timestamps();
             $table->bigInteger('attributevalue_id');
             $table->bigInteger('product_id');
+            $table->foreign('attributevalue_id')->references('id')->on('attributevalue')->onDelete('cascade');
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
         });
     }
 
