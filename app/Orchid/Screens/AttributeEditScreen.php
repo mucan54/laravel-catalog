@@ -134,6 +134,10 @@ class AttributeEditScreen extends Screen
      */
     public function remove(Attribute $post)
     {
+        $post->attributevalues()->each(function($item) {
+            $item->products()->detach();
+            $item->delete();
+        });
         $post->delete()
             ? Alert::info('You have successfully deleted the post.')
             : Alert::warning('An error has occurred')
