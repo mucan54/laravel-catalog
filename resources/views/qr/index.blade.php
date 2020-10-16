@@ -85,7 +85,7 @@ padding: 5px;
                 <div class="swiper-scrollbar"></div>
             </div>
         </div>
-    <h1 style='text-align:center; padding:10px; background: beige;' >{{$projects->name}}</h1>
+    <h1 style='text-align:center; padding:10px; background: beige;' >{{$projects->sku}}</h1>
         <div class="col-sm-3" style='background: rgba(220, 140, 246, 0.03);'>{!! $projects->body !!} 					<hr>
             @include('attributes')</div>
     <div class="row"></div>

@@ -8,7 +8,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<!-- Title Tag  -->
-<title>Rosetta Stone Atelier - {{$projects->name}}</title>
+<title>Rosetta Stone Atelier - {{$projects->sku}}</title>
 	<!-- Favicon -->
 	<link rel="icon" type="image/png" href="images/favicon.png">
 	<!-- Web Font -->
@@ -93,7 +93,7 @@
 		<!--/ End Header -->
 		
 		<!-- Breadcrumbs -->
-		@include('breadcrumb', ['sayfa' => $projects->name])
+		@include('breadcrumb', ['sayfa' => $projects->sku])
 		<!-- End Breadcrumbs -->
 		
 		<!-- Product Style -->
@@ -128,7 +128,7 @@
                         </div>
                     </div>
                 
-					<div class="col-sm-3" style='background: rgba(220, 140, 246, 0.03);'><h1 style='text-align:center; padding:10px; background: beige;' >{{$projects->name}}</h1>
+					<div class="col-sm-3" style='background: rgba(220, 140, 246, 0.03);'><h1 style='text-align:center; padding:10px; background: beige;' >{{$projects->sku}}</h1>
 						{!! $projects->body !!} 
 					<hr>
 					@include('attributes')

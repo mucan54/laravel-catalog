@@ -50,12 +50,11 @@ class ProductsListLayout extends Table
                     else
                     return '';
                 }),
-            TD::set('name', 'Ürün Adı')
+            TD::set('sku', 'SKU')
                 ->render(function (ModelsProducts $post) {
-                    return Link::make($post->name)
+                    return Link::make($post->sku)
                         ->route('platform.products.edit', $post);
                 })->sort()->filter(TD::FILTER_TEXT),
-            TD::set('sku', 'SKU')->sort()->filter(TD::FILTER_TEXT),
             TD::set('created_at', 'Eklenme T.')->sort(),
             TD::set('updated_at', 'Düzenlenme T.')->sort(),
         ];

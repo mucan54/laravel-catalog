@@ -62,21 +62,10 @@
 
 		.product-content{
 			margin-top: 20px;
-			height: 70px;
 			vertical-align: middle;
 			display: table-cell;
 		}
-
-		.product-img{
-			height: 394px;
-			display: flex;
-			width: 262px;
-			align-items: center;
-			overflow: hidden;
-			margin: auto;
-		}
-
-		.default-image{
+		.default-img{
 			width: 262px;
 			height: 350px;
 		}
@@ -183,10 +172,10 @@
 							@foreach($products as $product)
 							<div class="col-lg-4 col-md-6 col-12">
 								<div class="single-product">
-									<div class="product-img">
+									<div >
 										<a href="/id/{{$product->id}}">
 										@if($product->attachment()->first() !== null)
-											<img class="default-img" src="{{ $product->attachment()->first()->url() }}" alt="#">
+											<img src="{{ $product->attachment()->first()->url() }}" alt="#">
 											@else 
 											<img style='width:263px; height:394px' class="default-img" src="no-image.png" alt="#">
 										@endif
@@ -195,7 +184,7 @@
 										</a>
 									</div>
 									<div class="myh3 product-content">
-										<a class='mytext' href="/id/{{$product->id}}">{{$product->name}}</a>
+										<a class='mytext' href="/id/{{$product->id}}">{{$product->sku}}</a>
 									</div>
 								</div>
 							</div>
