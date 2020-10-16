@@ -183,5 +183,8 @@ Route::screen('stats', StatsListScreen::class)
 Route::get('qrdownload/{sku}', [QrController::class, 'download'])
     ->name('platform.qr.download');
 
+Route::get('qrmake/{sku}', [QrController::class, 'make'])
+    ->name('platform.qr.download');
+
 
 //Route::screen('idea', 'Idea::class','platform.screens.idea');
