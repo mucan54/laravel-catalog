@@ -39,6 +39,10 @@
 	<!-- Slicknav -->
     <link rel="stylesheet" href="/css/site/slicknav.min.css">
 
+    <link rel="stylesheet" type="text/css" href="css/xzoom.css" media="all" />
+
+<!-- XZOOM JQUERY PLUGIN  -->
+
 
 <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css">
 <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
@@ -195,34 +199,34 @@
 <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
+<script type="text/javascript" src="js/xzoom.min.js"></script>
+
+
 <script>
 	$(document).ready(function() {
+
   $('.img.nomobile').each(function() {
       var currentImage = $(this);
       currentImage.wrap("<a class='image-link' href='" + currentImage.attr("src") + "'</a>");
   });
-  $('.image-link').magnificPopup({
-	gallery: {
-      enabled: true
-	},  
-	zoom: {
-    enabled: true, // By default it's false, so don't forget to enable it
 
-    duration: 300, // duration of the effect, in milliseconds
-    easing: 'ease-in-out', // CSS transition easing function
+  $('.img.nomobile').click(function() {
+    jQuery(".mfp-img").xzoom();
+    });
+    
 
-    // The "opener" function should return the element from which popup will be zoomed in
-    // and to which popup will be scaled down
-    // By defailt it looks for an image tag:
-    opener: function(openerElement) {
-      // openerElement is the element on which popup was initialized, in this case its <a> tag
-      // you don't need to add "opener" option if this code matches your needs, it's defailt one.
-      return openerElement.is('img') ? openerElement : openerElement.find('img');
-    }
-  },
-	verticalFit: true, 
-	type:'image'});  
+    $('.image-link').bind('click', function() {
+        var xzoom = $(this).data('xzoom');
+        xzoom.closezoom();
+        var gallery = xzoom.gallery().cgallery;
+        var i, images = new Array();
+        for (i in gallery) {
+            images[i] = {src: gallery[i]};
+        }
+        $.magnificPopup.open({items: images, type:'image', gallery: {enabled: true}});
+        event.preventDefault();
 });
+
 
 
     var mySwiper = new Swiper('.swiper-container', {

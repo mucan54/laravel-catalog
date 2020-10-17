@@ -76,10 +76,10 @@ class ProductsEditScreen extends Screen
                 ->method('createOrUpdate')
                 ->canSee($this->exists),
 
-                Layout::modal('exampleModals', [
-                    Layout::modal('exampleModal', [
-                        Layout::rows([]),
-                    ])])
+            Button::make('Sil')
+                ->icon('trash')
+                ->method('remove')
+                ->canSee($this->exists),
         ];
     }
 
@@ -107,6 +107,7 @@ class ProductsEditScreen extends Screen
         return [
             Layout::tabs([
                 'Ürün Bilgileri' => [
+                    Layout::rows([
                     TextArea::make('products.sku')
                     ->title('SKU')
                     ->help('Her ürün için benzersiz olmalıdır boşluk ve özel karakter içeremez!')
@@ -115,7 +116,7 @@ class ProductsEditScreen extends Screen
 
                     Quill::make('products.body')
                     ->title('Ürün Açıklaması'),
-                    
+                    ]),
                 ],
 
                 'Ürün Özellikleri' => Layout::rows($posteditor),
@@ -142,7 +143,6 @@ class ProductsEditScreen extends Screen
     public function createOrUpdate(Products $post, Request $request)
     {
         $request->validate([
-            'products.name' => 'required',
             'products.sku' => 'required|alpha_dash|unique:products,sku,'.$post->id,
             'products.body' => 'required',
         ]);

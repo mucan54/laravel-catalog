@@ -227,6 +227,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'RouteFilter' => App\Helpers\RouteFilter::class,
+        'SVGConvert' => App\Helpers\SVGConvert::class,
+
 
     ],
 

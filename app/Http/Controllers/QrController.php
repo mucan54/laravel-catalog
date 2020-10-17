@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Products;
 use SimpleSoftwareIO\QrCode\Generator;
+use App\Helpers\SVGConvert;
 
 class QrController extends Controller
 {
@@ -49,7 +50,7 @@ class QrController extends Controller
         <script src='https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.4.1/jspdf.debug.js'></script>
      <body id='body'>
      <div id='qrcode'>
-     <img src='data:image/svg+xml;charset=UTF-8,".$qrcode."'>
+     <img src='".SVGConvert::base64EncodeImage($qrcode)."'>
      <p id = \"GFG_DOWN\" style = \"font-size: 22px;margin-top: -3px;text-align: center;\">".$sku."</p>  
      </div>
      <script>
@@ -59,7 +60,7 @@ class QrController extends Controller
         link.download = '".$sku.".png';
         link.href = canvas.toDataURL()
         link.click();
-        window.history.back();
+
     });
      </script>
      </body>
