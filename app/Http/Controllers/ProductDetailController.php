@@ -18,7 +18,7 @@ class ProductDetailController extends Controller
     public function __invoke()
     {
 
-        $projects = Products::where('id', $this->param->parameter('id'))->first();
+        $projects = Products::where('sku', $this->param->parameter('sku'))->first();
 
         return view('product', compact('projects'));
 

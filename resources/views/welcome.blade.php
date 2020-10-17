@@ -173,7 +173,7 @@
 							<div class="col-lg-4 col-md-6 col-12">
 								<div class="single-product">
 									<div >
-										<a href="/id/{{$product->id}}">
+										<a href="/sku/{{$product->sku}}">
 										@if($product->attachment()->first() !== null)
 											<img src="{{ $product->attachment()->first()->url() }}" alt="#">
 											@else 
@@ -184,7 +184,7 @@
 										</a>
 									</div>
 									<div class="myh3 product-content">
-										<a class='mytext' href="/id/{{$product->id}}">{{$product->sku}}</a>
+										<a class='mytext' href="/sku/{{$product->sku}}">{{$product->sku}}</a>
 									</div>
 								</div>
 							</div>

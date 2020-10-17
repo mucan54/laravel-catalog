@@ -25,7 +25,7 @@ Route::middleware([CustomerMiddleware::class])->group(function () {
         ->name('products');
 
 
-        Route::get('id/{id}', ProductDetailController::class)
+        Route::get('sku/{sku}', ProductDetailController::class)
         ->name('product');
 
 });
