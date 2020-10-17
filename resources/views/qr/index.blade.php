@@ -92,9 +92,6 @@ padding: 5px;
 </div>
 <script>
 
-ga('set', 'user', 'qrCode');
-ga('set', 'product', '{{$projects->sku}}');
-
 var mySwiper = new Swiper('.swiper-container', {
   // Optional parameters
   direction: 'horizontal',

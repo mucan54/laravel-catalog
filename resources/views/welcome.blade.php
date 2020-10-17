@@ -252,15 +252,15 @@
 	<script src="/js/site/easing.js"></script>
 	<!-- Active JS -->
 	<script src="/js/site/active.js"></script>
-	@include('google')
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-120508683-2"></script>
 	<script>
-
-		gtag('set', {'user_id': '{{ Session::get('user_name')}}'});
-		ga('set', 'userId', '{{ Session::get('user_name')}}');
-
-		// Send the custom dimension value with a pageview hit.
-		ga('send', 'pageview');
-
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('set', {'user_id': 'esat'});
+	gtag('config', 'UA-120508683-2');
+	</script>
+	<script>
 	$(document).ready(function () {
 		$('.accordion').on('click', function () {
 			$('#cats').slideToggle(500);

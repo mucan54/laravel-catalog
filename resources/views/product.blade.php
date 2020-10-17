@@ -38,12 +38,9 @@
     <link rel="stylesheet" href="/css/site/owl-carousel.css">
 	<!-- Slicknav -->
     <link rel="stylesheet" href="/css/site/slicknav.min.css">
+    <link type="text/css" rel="stylesheet" href="/light/css/lightGallery.css" /> 
 
-    <link rel="stylesheet" type="text/css" href="css/xzoom.css" media="all" />
 
-<!-- XZOOM JQUERY PLUGIN  -->
-
-@include('google')
 <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css">
 <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
 
@@ -54,6 +51,10 @@
     <link rel="stylesheet" href="/css/site/responsive.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
+
+        .image-link{
+            display: contents;
+        }
 
 
         @media only screen and (min-width: 750px) {
@@ -80,6 +81,7 @@
 	
 </head>
 <body class="js">
+    
 	
 	<!-- Preloader -->
 	<div class="preloader">
@@ -109,9 +111,13 @@
                 <div class="row">
                     <div class="col-sm-8 parent owl-theme">
             
+                        <div id='myimages' style='display: contents;'>
                         @foreach($projects->attachment()->get() as $item)
+                        <a class='image-link' href='{{ $item->url }}'>
                                 <img class='img nomobile' src="{{ $item->url }}">
+                        </a>
                                  @endforeach
+                        </div>
                          <div class="swiper-container">
                             <!-- Additional required wrapper -->
                             <div class="swiper-wrapper">
@@ -194,72 +200,43 @@
 	<script src="/js/site/easing.js"></script>
 	<!-- Active JS -->
     <script src="/js/site/active.js"></script>
-    
+
+
+    <!-- A jQuery plugin that adds cross-browser mouse wheel support. (Optional) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js"></script>
+
+    <script src="/light/js/lightgallery.min.js"></script>
+
+    <!-- lightgallery plugins -->
+    <script src="/light/js/lg-thumbnail.min.js"></script>
+    <script src="/light/js/lg-fullscreen.min.js"></script>
+    <script src="/light/js/zoom.js"></script>
+    <script src="/light/js/fullscreen.js"></script>
+    <script src="/light/js/thumbnail.js"></script>
 
 <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
-<script type="text/javascript" src="js/xzoom.min.js"></script>
-
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-120508683-2"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('set', {'user_id': 'esat'});
+gtag('set', {'product': 'RS0001'});
+gtag('config', 'UA-120508683-2');
+</script>
 
 <script>
-
-gtag('set', {'user_id': '{{ Session::get('user_name')}}'});
-gtag('set', {'product': '{{$projects->sku}}'});
-ga('set', 'userId', '{{ Session::get('user_name')}}');
-ga('set', 'product', '{{$projects->sku}}');
-
-// Send the custom dimension value with a pageview hit.
-ga('send', 'pageview');
-
 	$(document).ready(function() {
-
-  $('.img.nomobile').each(function() {
-      var currentImage = $(this);
-      currentImage.wrap("<a class='image-link' href='" + currentImage.attr("src") + "'</a>");
-  });
-
-  $('.img.nomobile').click(function() {
-    jQuery(".mfp-img").xzoom();
+    $('.image-link').click(function(){
+        $('#scrollUp').hide();
     });
-    
 
-    $('.image-link').bind('click', function() {
-        var xzoom = $(this).data('xzoom');
-        xzoom.closezoom();
-        var gallery = xzoom.gallery().cgallery;
-        var i, images = new Array();
-        for (i in gallery) {
-            images[i] = {src: gallery[i]};
-        }
-        $.magnificPopup.open({items: images, type:'image', gallery: {enabled: true}});
-        event.preventDefault();
+   $("#myimages").lightGallery(); 
 });
-
-
-
-    var mySwiper = new Swiper('.swiper-container', {
-      // Optional parameters
-      direction: 'horizontal',
-	  loop: true,
-	  autoHeight: true, 
-    
-      // If we need pagination
-      pagination: {
-        el: '.swiper-pagination',
-      },
-    
-      // Navigation arrows
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-    
-      // And if we need scrollbar
-      scrollbar: {
-        el: '.swiper-scrollbar',
-      },
-    })
+ 
+ 
     </script>
 </body>
 </html>
