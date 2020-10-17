@@ -255,7 +255,7 @@
 	@include('google')
 	<script>
 
-		ga('set', 'user', '{{ Session::get('user_name')}}');
+		ga('set', 'userId', '{{ Session::get('user_name')}}');
 
 		// Send the custom dimension value with a pageview hit.
 		ga('send', 'pageview');

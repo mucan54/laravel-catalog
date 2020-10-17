@@ -204,7 +204,7 @@
 
 <script>
 
-ga('set', 'user', '{{ Session::get('user_name')}}');
+ga('set', 'userId', '{{ Session::get('user_name')}}');
 ga('set', 'product', '{{$projects->sku}}');
 
 // Send the custom dimension value with a pageview hit.
