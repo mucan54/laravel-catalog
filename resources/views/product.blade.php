@@ -204,6 +204,8 @@
 
 <script>
 
+gtag('set', {'user_id': '{{ Session::get('user_name')}}'});
+gtag('set', {'product': '{{$projects->sku}}'});
 ga('set', 'userId', '{{ Session::get('user_name')}}');
 ga('set', 'product', '{{$projects->sku}}');
 

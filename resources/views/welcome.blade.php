@@ -255,6 +255,7 @@
 	@include('google')
 	<script>
 
+		gtag('set', {'user_id': '{{ Session::get('user_name')}}'});
 		ga('set', 'userId', '{{ Session::get('user_name')}}');
 
 		// Send the custom dimension value with a pageview hit.
