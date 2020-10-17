@@ -60,7 +60,7 @@ class QrController extends Controller
         link.download = '".$sku.".png';
         link.href = canvas.toDataURL()
         link.click();
-
+        window.history.back();
     });
      </script>
      </body>
