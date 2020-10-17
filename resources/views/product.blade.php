@@ -43,7 +43,7 @@
 
 <!-- XZOOM JQUERY PLUGIN  -->
 
-
+@include('google')
 <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css">
 <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
 
@@ -203,6 +203,13 @@
 
 
 <script>
+
+ga('set', 'user', '{{ Session::get('user_name')}}');
+ga('set', 'product', '{{$projects->sku}}');
+
+// Send the custom dimension value with a pageview hit.
+ga('send', 'pageview');
+
 	$(document).ready(function() {
 
   $('.img.nomobile').each(function() {

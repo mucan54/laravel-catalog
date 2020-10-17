@@ -43,7 +43,7 @@
 	<link rel="stylesheet" href="/css/site/reset.css">
 	<link rel="stylesheet" href="/css/site/style.css">
     <link rel="stylesheet" href="/css/site/responsive.css">
-
+	
 	<style>
 
 		.single-product{
@@ -252,7 +252,13 @@
 	<script src="/js/site/easing.js"></script>
 	<!-- Active JS -->
 	<script src="/js/site/active.js"></script>
+	@include('google')
 	<script>
+
+		ga('set', 'user', '{{ Session::get('user_name')}}');
+
+		// Send the custom dimension value with a pageview hit.
+		ga('send', 'pageview');
 
 	$(document).ready(function () {
 		$('.accordion').on('click', function () {

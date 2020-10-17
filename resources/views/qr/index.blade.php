@@ -6,7 +6,7 @@
 
 <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css">
 <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
-
+@include('google')
 <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -91,6 +91,10 @@ padding: 5px;
     <div class="row"></div>
 </div>
 <script>
+
+ga('set', 'user', 'qrCode');
+ga('set', 'product', '{{$projects->sku}}');
+
 var mySwiper = new Swiper('.swiper-container', {
   // Optional parameters
   direction: 'horizontal',
