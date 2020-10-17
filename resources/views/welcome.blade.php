@@ -252,14 +252,18 @@
 	<script src="/js/site/easing.js"></script>
 	<!-- Active JS -->
 	<script src="/js/site/active.js"></script>
-	@include('google')
-	<script>
-
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-120508683-2"></script>
+		<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
 		gtag('set', {'user_id': '{{ Session::get('user_name')}}'});
-		ga('set', 'userId', '{{ Session::get('user_name')}}');
+		gtag('config', 'UA-120508683-2');
+		</script>
 
-		// Send the custom dimension value with a pageview hit.
-		ga('send', 'pageview');
+
+	<script>
 
 	$(document).ready(function () {
 		$('.accordion').on('click', function () {

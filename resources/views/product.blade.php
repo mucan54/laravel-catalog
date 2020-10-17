@@ -201,16 +201,17 @@
 
 <script type="text/javascript" src="js/xzoom.min.js"></script>
 
-
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-120508683-2"></script>
 <script>
-
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
 gtag('set', {'user_id': '{{ Session::get('user_name')}}'});
 gtag('set', {'product': '{{$projects->sku}}'});
-ga('set', 'userId', '{{ Session::get('user_name')}}');
-ga('set', 'product', '{{$projects->sku}}');
+gtag('config', 'UA-120508683-2');
+</script>
 
-// Send the custom dimension value with a pageview hit.
-ga('send', 'pageview');
+<script>
 
 	$(document).ready(function() {
 
