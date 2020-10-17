@@ -60,8 +60,10 @@
 			text-align: center;
 		}
 
+
 		.product-content{
 			margin-top: 20px;
+			height: 40px;
 			vertical-align: middle;
 			display: table-cell;
 		}
@@ -80,16 +82,34 @@
 		.accordion{
 			background-color: aliceblue;
 		}
+
+		.product-img{
+ 			display: flex;
+ 			align-items: center;
+ 			overflow: hidden;
+ 			margin: auto;
+ 		}
+
 		@media only screen and (max-width: 750px) {
             #cats{
                 display: none;
             }
+
+			.product-img{
+ 			height: 100%;
+ 			width: 100%;
+ 			}
         }
 
 		@media only screen and (min-width: 750px) {
 			.accordion{
 				display: none;
 			}
+
+			.product-img{
+ 			height: 350px;
+ 			width: 262px;
+ 			}
 		}
 
 	</style>
@@ -172,10 +192,10 @@
 							@foreach($products as $product)
 							<div class="col-lg-4 col-md-6 col-12">
 								<div class="single-product">
-									<div >
+									<div class="product-img">
 										<a href="/sku/{{$product->sku}}">
 										@if($product->attachment()->first() !== null)
-											<img src="{{ $product->attachment()->first()->url() }}" alt="#">
+											<img class="product-img" src="{{ $product->attachment()->first()->url() }}" alt="#">
 											@else 
 											<img style='width:263px; height:394px' class="default-img" src="no-image.png" alt="#">
 										@endif
