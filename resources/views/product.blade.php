@@ -38,7 +38,7 @@
     <link rel="stylesheet" href="/css/site/owl-carousel.css">
 	<!-- Slicknav -->
     <link rel="stylesheet" href="/css/site/slicknav.min.css">
-    <link type="text/css" rel="stylesheet" href="/light/css/lightGallery.css" /> 
+    <link type="text/css" rel="stylesheet" href="/light/css/lightgallery.css" /> 
 
 
 <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css">
