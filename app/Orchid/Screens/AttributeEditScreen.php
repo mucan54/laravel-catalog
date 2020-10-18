@@ -79,6 +79,7 @@ class AttributeEditScreen extends Screen
             Button::make('Sil')
                 ->icon('trash')
                 ->method('remove')
+                ->confirm('Silmek İstediğinize Emin misiniz?')
                 ->canSee($this->exists),
         ];
     }

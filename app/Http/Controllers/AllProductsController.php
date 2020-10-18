@@ -52,7 +52,7 @@ class AllProductsController extends Controller
         }
         else
         $products = Products::latest();
-        $attribute = Attribute::all()->sortBy("order");
+        $attribute = Attribute::Where('order','<>',0)->orderBy("order");
 
         $products=$products->paginate(9)->onEachSide(3);
 

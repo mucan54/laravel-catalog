@@ -40,7 +40,7 @@ class CustomerEditScreen extends Screen
         $this->exists = $post->exists;
 
         if($this->exists){
-            $this->name = 'Edit post';
+            $this->name = 'Kullanıcıyı Düzenle';
         }
 
         return [
@@ -69,6 +69,7 @@ class CustomerEditScreen extends Screen
             Button::make('Sil')
                 ->icon('trash')
                 ->method('remove')
+                ->confirm('Silmek İstediğinize Emin misiniz?')
                 ->canSee($this->exists),
         ];
     }
