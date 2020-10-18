@@ -30,7 +30,6 @@ class CustomerMiddleware
                 if($request->route()->parameter('id'))
                 
                 $product = Products::where('id',$request->route()->parameter('id'))->first();
-                $stat->product_name=$product->name;
                 $stat->product_id=$product->sku;
                 if($request->route()->parameter('search'))
                 $stat->search=$request->route()->parameter('search');
