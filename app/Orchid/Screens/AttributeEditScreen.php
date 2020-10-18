@@ -100,7 +100,7 @@ class AttributeEditScreen extends Screen
                 Input::make('attribute.order')
                     ->title('Menu Sırası')
                     ->placeholder('Sayı Olmalıdır.')
-                    ->help('Menuler sıralanırken kaçıncı sırada yer alacağı.'),
+                    ->help('Menuler sıralanırken kaçıncı sırada yer alacağını belirleyin. Menuden gizlemek için 0 girin.'),
 
             ]),
        
