@@ -86,6 +86,10 @@
                 display: none;
             }
         }
+
+        #bilgitalepformu{
+            display: none;
+        }
             </style>
 	
 </head>
@@ -150,7 +154,11 @@
 					<div class="col-sm-3" style='background: rgba(220, 140, 246, 0.03);'><h1 style='text-align:center; padding:10px; background: beige;' >{{$projects->sku}}</h1>
 						@include('attributes')
 					<hr>
-					{!! $projects->body !!} 
+                    {!! $projects->body !!} 
+                    <hr>
+                    <a id='talepbutonu'>Daha Fazla Bilgi Talep Et</a>
+                    <br/>
+                    <iframe id='bilgitalepformu' src="https://docs.google.com/forms/d/e/1FAIpQLScjiMTCpov_dB5kC6LdCKXG9ukVzPTCICe_ZizHEnfNARE7zQ/viewform?embedded=true" width="640" height="776" frameborder="0" marginheight="0" marginwidth="0">Yükleniyor…</iframe>
 					</div>
 						
                 <div class="row"></div>
@@ -240,6 +248,10 @@ gtag('config', 'UA-120508683-2');
 	$(document).ready(function() {
     $('.image-link').click(function(){
         $('#scrollUp').hide();
+    });
+
+    $('#talepbutonu').click(function(){
+        $('#bilgitalepformu').toggle(1500);
     });
 
    $("#myimages").lightGallery(); 
