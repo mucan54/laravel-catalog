@@ -57,6 +57,10 @@
             border-style: solid;
         }
 
+        #specs{
+            padding-top: 25px;
+        }
+
         .image-link{
             display: contents;
         }
