@@ -107,6 +107,8 @@ class ProductsEditScreen extends Screen
 
         return [
             Layout::tabs([
+                'Ürün Özellikleri' => Layout::rows($posteditor),
+
                 'Ürün Bilgileri' => [
                     Layout::rows([
                     TextArea::make('products.sku')
@@ -119,8 +121,6 @@ class ProductsEditScreen extends Screen
                     ->title('Ürün Açıklaması'),
                     ]),
                 ],
-
-                'Ürün Özellikleri' => Layout::rows($posteditor),
 
                     'Ürün Görselleri' => [
                         Layout::rows([

@@ -139,9 +139,9 @@
                     </div>
                 
 					<div class="col-sm-3" style='background: rgba(220, 140, 246, 0.03);'><h1 style='text-align:center; padding:10px; background: beige;' >{{$projects->sku}}</h1>
-						{!! $projects->body !!} 
+						@include('attributes')
 					<hr>
-					@include('attributes')
+					{!! $projects->body !!} 
 					</div>
 						
                 <div class="row"></div>
