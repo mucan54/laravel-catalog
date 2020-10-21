@@ -118,7 +118,8 @@ class ProductsEditScreen extends Screen
                     ->placeholder('Örnek : D-101'),
 
                     Quill::make('products.body')
-                    ->title('Ürün Açıklaması'),
+                    ->title('Ürün Açıklaması')
+                    ->value('<blockquote>Ürün açıklaması</blockquote><p><br></p><ul><li>madde 1</li><li>madde 2</li></ul>'),
                     ]),
                 ],
 
