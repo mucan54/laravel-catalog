@@ -25,11 +25,11 @@ class CustomerMiddleware
 
             $stat= new Stats;
 
-            if($request->route()->parameter('id') || $request->route()->parameter('search') || $request->route()->parameter('cat'))
+            if($request->route()->parameter('sku') || $request->route()->parameter('search') || $request->route()->parameter('cat'))
             {
-                if($request->route()->parameter('id'))
+                if($request->route()->parameter('sku'))
                 
-                $product = Products::where('id',$request->route()->parameter('id'))->first();
+                $product = Products::where('sku',$request->route()->parameter('sku'))->first();
                 $stat->product_id=$product->sku;
                 if($request->route()->parameter('search'))
                 $stat->search=$request->route()->parameter('search');
