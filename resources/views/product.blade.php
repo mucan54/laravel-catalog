@@ -51,6 +51,11 @@
     <link rel="stylesheet" href="/css/site/responsive.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
+        blockquote
+        {
+            border-color: beige;
+            border-style: solid;
+        }
 
         .image-link{
             display: contents;
