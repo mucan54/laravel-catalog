@@ -43,11 +43,11 @@
 	<link rel="stylesheet" href="/css/site/reset.css">
 	<link rel="stylesheet" href="/css/site/style.css">
     <link rel="stylesheet" href="/css/site/responsive.css">
-	
+	<script src=http://www.gmodules.com/ig/ifr?url=http://www.google.com/ig/modules/translatemypage.xml&up_source_language=tr&w=160&h=60&title=&border=&output=js></script><!---sitene-kod-ekle.tr.gg kod sonu--->
 	<style>
 
 		.single-product{
-			background-color: rgb(173, 173, 173);
+			background-color: #d3d3d3;
 		}
 		.myh3{
 			font-size: 18px !important;
@@ -59,6 +59,11 @@
 		.mytext{
 			text-align: center;
 		}
+
+		.shop-sidebar .single-widget .title {
+			border-bottom: 1px solid #ffffff;
+		}
+
 
 
 		.product-content{
@@ -88,7 +93,11 @@
  			align-items: center;
  			overflow: hidden;
  			margin: auto;
- 		}
+		 }
+		 
+		 .shop-sidebar .single-widget{
+			background: #efeee9;
+		 }
 
 		@media only screen and (max-width: 750px) {
             #cats{

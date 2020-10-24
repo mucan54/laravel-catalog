@@ -66,6 +66,10 @@ class ProductsEditScreen extends Screen
     public function commandBar(): array
     {
         return [
+            Button::make('Geri Dön')
+                ->icon('arrow-left-circle')
+                ->method('back'),
+
             Button::make('Ürün Ekle')
                 ->icon('pencil')
                 ->method('createOrUpdate')
@@ -158,7 +162,7 @@ class ProductsEditScreen extends Screen
 
         Alert::info('You have successfully created an post.');
 
-        return redirect()->route('platform.products.list');
+        //return redirect()->route('platform.products.list');
     }
 
     public function remove(Products $post)
@@ -168,6 +172,11 @@ class ProductsEditScreen extends Screen
             ? Alert::info('You have successfully deleted the post.')
             : Alert::warning('An error has occurred')
         ;
+
+        return redirect()->route('platform.products.list');
+    }
+
+    public function back(Request $request){
 
         return redirect()->route('platform.products.list');
     }

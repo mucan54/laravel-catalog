@@ -1,7 +1,7 @@
 <style>
 
 .middle-inner{
-    padding-top:100px;
+    padding-top:50px;
 }
 
 .search-top{
@@ -17,6 +17,10 @@ padding: 10px;
 
 .btnn{
     width: 50px;
+}
+
+.breadcrumbs{
+    background-color: #efeee9;
 }
 
 
@@ -41,7 +45,7 @@ padding: 10px;
                     <!-- Search Form -->
                     
                         <form style='display: flex;' action='/'>
-                            <input name="search" value='{{ app('request')->input('search') }}' placeholder="Ürün Ara..." type="search">
+                            <input name="search" value='{{ app('request')->input('search') }}' placeholder="ENTER CODE" type="search">
                             <button class="btnn"><i class="ti-search"></i></button>
                         </form>
 

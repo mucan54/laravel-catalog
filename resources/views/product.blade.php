@@ -117,7 +117,7 @@
 		
 		<!-- Product Style -->
 		<section class="product-area shop-sidebar shop section">
-			<div class="container">
+			<div class="container" style='width:95%;'>
                 @if($projects->myhero)
                 <div class="row"><img style='width: 100%;height: 100%;padding-bottom: 100px;' src="{{ $projects->myhero->url }}"></div>
                 @endif
@@ -151,7 +151,7 @@
                         </div>
                     </div>
                 
-					<div class="col-sm-3" style='background: rgba(220, 140, 246, 0.03);'><h1 style='text-align:center; padding:10px; background: beige;' >{{$projects->sku}}</h1>
+					<div class="col-sm-4" style='background: rgba(220, 140, 246, 0.03);'><h1 style='text-align:center; padding:10px; background: #efeee9;' >{{$projects->sku}}</h1>
 						@include('attributes')
 					<hr>
                     {!! $projects->body !!} 
