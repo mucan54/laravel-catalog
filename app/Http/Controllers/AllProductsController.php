@@ -28,7 +28,7 @@ class AllProductsController extends Controller
             
             $products = Products::query();
             if ($this->request->query('search')!==null)
-                $products = $products->where('name', 'like', '%'.$this->request->query('search').'%');
+                $products = $products->where('sku', 'like', '%'.$this->request->query('search').'%');
 
             // if ($this->request->query('str')!==null){ 
             //     $parameter=explode('-', $this->request->query('str'));
