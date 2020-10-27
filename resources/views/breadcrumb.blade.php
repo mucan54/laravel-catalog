@@ -6,10 +6,10 @@
                 <div class="bread-inner">
                     <ul class="bread-list">
                     @if(isset($sayfa))         
-                    <li><a href="{{url('/')}}">Ana Sayfa<i class="ti-arrow-right"></i></a></li>
+                    <li><a href="{{url('/')}}">Home Page<i class="ti-arrow-right"></i></a></li>
                     <li class="active">{{ $sayfa }}</a></li>
                     @elseif(app('request')->input('search')!==null || app('request')->input('cat')!==null)
-                    <li><a href="{{url('/')}}">Ana Sayfa<i class="ti-arrow-right"></i></a></li> 
+                    <li><a href="{{url('/')}}">Home Page<i class="ti-arrow-right"></i></a></li> 
                         @if(app('request')->input('cat')!==null)
                         <li class="active"><a href ='{!! route('products',['search'=>app('request')->input('search')]) !!}'>
                             Kategori '{{ $cat }}'
@@ -21,11 +21,11 @@
                         @endif
                         @if(app('request')->input('search')!==null)
                         <a href ='{!! route('products',['cat'=>app('request')->input('cat')]) !!}'>
-                        <li class="active">Arama Sonuçları '{{ app('request')->input('search') }}'</a></li>
+                        <li class="active">Search Result '{{ app('request')->input('search') }}'</a></li>
                         </a>
                         @endif
                     @else
-                    <li><a href="{{url('/')}}">Ana Sayfa</a></li>
+                    <li><a href="{{url('/')}}">Home Page</a></li>
                     @endif
                     </ul>
                 </div>
