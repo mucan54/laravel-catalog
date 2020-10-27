@@ -18,17 +18,12 @@ use App\Http\Middleware\CustomerMiddleware;
 |
 */
 
-Route::middleware([CustomerMiddleware::class])->group(function () {
+Route::get('/', AllProductsController::class)
+->name('products')->middleware(CustomerMiddleware::class);
 
 
-        Route::get('/', AllProductsController::class)
-        ->name('products');
-
-
-        Route::get('sku/{sku}', ProductDetailController::class)
-        ->name('product');
-
-});
+Route::get('sku/{sku}', ProductDetailController::class)
+->name('product')->middleware(CustomerMiddleware::class);
 
 
 Route::any('login', [CustomerController::class,'login'])
