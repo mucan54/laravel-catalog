@@ -66,14 +66,6 @@ Route::screen('users/{users}/edit', UserEditScreen::class)
             ->push(__('Edit'), route('platform.systems.users.edit', $user));
     });
 
-// Platform > System > Users
-Route::screen('users/new', UserEditScreen::class)
-    ->name('platform.systems.users.edit')
-    ->breadcrumbs(function (Trail $trail, $user) {
-        return $trail
-            ->parent('platform.systems.users')
-            ->push(__('Edit'), route('platform.systems.users.edit', $user));
-    });
 
 // Platform > System > Users > User
 Route::screen('users', UserListScreen::class)
