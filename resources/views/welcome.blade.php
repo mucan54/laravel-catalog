@@ -204,7 +204,7 @@
 									<div class="product-img">
 										<a href="/sku/{{$product->sku}}">
 										@if($product->attachment()->first() !== null)
-											<img class="product-img" src="{{ $product->attachment()->first()->url() }}" alt="#">
+											<img class="product-img" src="{{ $product->thumb ? $product->mythumb->url : $product->attachment()->first()->url() }}" alt="#">
 											@else 
 											<img style='width:263px; height:394px' class="default-img" src="no-image.png" alt="#">
 										@endif

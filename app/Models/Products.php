@@ -18,7 +18,8 @@ class Products extends Model
         'name',
         'sku',
         'body',
-        'hero'
+        'hero',
+        'thumb'
     ];
 
     protected $allowedFilters = [
@@ -35,6 +36,13 @@ class Products extends Model
     {
 
         return $this->hasOne(Attachment::class, 'id', 'hero');
+    }
+
+
+    public function mythumb()
+    {
+
+        return $this->hasOne(Attachment::class, 'id', 'thumb');
     }
 
 
