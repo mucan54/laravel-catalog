@@ -90,6 +90,10 @@
         #bilgitalepformu{
             display: none;
         }
+
+        .container{
+            max-width: unset !important;
+        }
             </style>
 	
 </head>
