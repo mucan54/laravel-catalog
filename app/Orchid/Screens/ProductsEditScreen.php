@@ -136,16 +136,16 @@ class ProductsEditScreen extends Screen
                             ->title('Ürünün ana resmi')
                             ->width(1000)
                             ->height(500),
+        
+                            Upload::make('products.attachment')
+                            ->title('Diğer Resimler'),
 
                             Cropper::make('products.thumb')
                             ->targetId()
                             ->title('Ürünün liste resmi')
                             ->help('Eğer ürün resmi listelemede uygun gözükmüyorsa listeleme resmini burdan ayrıca yüklemelisiniz, listeleme resmi sorunsuzsa yüklenemenize gerek yoktur.')
                             ->width(262)
-                            ->height(350),
-        
-                            Upload::make('products.attachment')
-                            ->title('Diğer Resimler')
+                            ->height(350)
         
                     ])
                     ]]),
