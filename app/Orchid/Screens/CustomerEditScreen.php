@@ -44,7 +44,7 @@ class CustomerEditScreen extends Screen
         }
 
         return [
-            'customer' => $post
+            'customers' => $post
         ];
     }
 
@@ -83,20 +83,20 @@ class CustomerEditScreen extends Screen
     {
         return [
             Layout::rows([
-                Input::make('customer.username')
+                Input::make('customers.username')
                     ->title('Kullanıcı ID')
                     ->placeholder('kullanici-adi')
                     ->help('Kullanıcıya ait benzersiz bir id olmalıdır.'),
 
-                Input::make('customer.name')
+                Input::make('customers.name')
                     ->title('Kullanıcı Adı')
                     ->placeholder('Kullanıcı Adı'),
                 
-                    Input::make('customer.email')
+                    Input::make('customers.email')
                     ->title('Kullanıcı Mail Adres')
                     ->placeholder('site@example.com'),
 
-                    Input::make('customer.password')
+                    Input::make('customers.password')
                     ->title('Kullanıcı Şifresi')
                     ->placeholder('123123'),
 
@@ -107,13 +107,12 @@ class CustomerEditScreen extends Screen
     public function createOrUpdate(Customer $post, Request $request)
     {
         $request->validate([
-            'customer.username' => 'required|alpha_dash|unique:customer,username,'.$post->id,
-            'customer.password' => 'required|alpha_dash|unique:customer,password,'.$post->id,
-            'customer.name' => 'required',
-            'customer.email' => 'required',
+            'customers.username' => 'required|alpha_dash|unique:customers,username,'.$post->id,
+            'customers.password' => 'required|alpha_dash|unique:customers,password,'.$post->id,
+            'customers.name' => 'required',
         ]);
 
-        $post->fill($request->get('customer'))->save();
+        $post->fill($request->get('customers'))->save();
 
         Alert::info('You have successfully created an post.');
 
@@ -133,6 +132,6 @@ class CustomerEditScreen extends Screen
             : Alert::warning('An error has occurred')
         ;
 
-        return redirect()->route('platform.post.list');
+        return redirect()->route('platform.customer.list');
     }
 }

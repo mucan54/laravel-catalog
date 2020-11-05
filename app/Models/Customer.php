@@ -11,6 +11,8 @@ class Customer extends Model
 {
     use AsSource, Filterable;
 
+    protected $table = 'customers';
+
     protected $fillable = [
         'name',
         'username',
