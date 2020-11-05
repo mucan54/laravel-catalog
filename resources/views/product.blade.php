@@ -85,6 +85,10 @@
             .nomobile{
                 display: none;
             }
+
+            .middle-inner {
+                padding-top: 20px !important;
+            }
         }
 
         #bilgitalepformu{
@@ -123,7 +127,7 @@
 		<section class="product-area shop-sidebar shop section">
 			<div class="container" style='width:95%;'>
                 @if($projects->myhero)
-                <div class="row"><img style='width: 100%;height: 100%;padding-bottom: 100px;' src="{{ $projects->myhero->url }}"></div>
+                <div class="row"><img style='width: 100%;height: 100%;padding-bottom: 50px;' src="{{ $projects->myhero->url }}"></div>
                 @endif
                 <div class="row">
                     <div class="col-sm-8 parent owl-theme">

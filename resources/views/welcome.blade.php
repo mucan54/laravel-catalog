@@ -64,6 +64,11 @@
 			border-bottom: 1px solid #ffffff;
 		}
 
+		.shop-sidebar .single-widget {
+			border-bottom: 1px solid #ffffff;
+			margin-bottom: 60px;
+		}
+
 
 
 		.product-content{
@@ -89,7 +94,6 @@
 		}
 
 		.product-img{
- 			display: flex;
  			align-items: center;
  			overflow: hidden;
  			margin: auto;
@@ -108,6 +112,9 @@
  			height: 100%;
  			width: 100%;
  			}
+			 .middle-inner {
+			padding-top: 20px !important;
+			}
         }
 
 		@media only screen and (min-width: 750px) {
@@ -196,7 +203,7 @@
 						</div>
 					</div>
 					<div class="col-lg-9 col-md-8 col-12">
-						<div class="row">
+						<div class="row" style="margin-top: -50px;">
 							
 							@foreach($products as $product)
 							<div class="col-lg-4 col-md-6 col-12">
