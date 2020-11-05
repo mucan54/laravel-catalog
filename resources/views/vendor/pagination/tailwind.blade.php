@@ -4,13 +4,11 @@
         <div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
             <div>
                 <p class="text-sm text-gray-700 leading-5" style='padding: 20px;'>
-                    {!! __('Toplam') !!}
-                    <span class="font-medium">{{ $paginator->firstItem() }}</span>
-                    {!! __('den') !!}
-                    <span class="font-medium">{{ $paginator->lastItem() }}</span>
-                    {!! __('\'e') !!}
-                    <span class="font-medium">{{ $paginator->total() }}</span>
-                    {!! __('sayfa') !!}
+
+                    <span class="font-medium">{{ $paginator->currentPage() }}</span>
+                    {!! __('of total') !!}
+                    <span class="font-medium">{{ $paginator->lastPage() }}</span>
+                    {!! __('pages') !!}
                 </p>
             </div>
 
