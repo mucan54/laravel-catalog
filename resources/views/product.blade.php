@@ -160,7 +160,7 @@
 					<hr>
                     {!! $projects->body !!} 
                     <hr>
-                    <a id='talepbutonu'>More Info</a>
+                    <a id='talepbutonu'>CONTACT FOR INFO</a>
                     <br/>
                     <iframe id='bilgitalepformu' src="https://docs.google.com/forms/d/e/1FAIpQLScjiMTCpov_dB5kC6LdCKXG9ukVzPTCICe_ZizHEnfNARE7zQ/viewform?embedded=true" width="640" height="776" frameborder="0" marginheight="0" marginwidth="0">Yükleniyor…</iframe>
 					</div>
