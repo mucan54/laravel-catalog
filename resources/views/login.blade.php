@@ -298,7 +298,7 @@ input[type=text]:placeholder {
     <form method="post" action="{{ url('login') }}">
         {{ csrf_field() }}
       <input type="text" id="password" class="fadeIn third" name="password" placeholder="Enter your password...">
-      <input type="submit" class="fadeIn fourth" value="Login">
+      <input type="submit" class="fadeIn fourth" value="LOGIN">
     </form>
 
   </div>
