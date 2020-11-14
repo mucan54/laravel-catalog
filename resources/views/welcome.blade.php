@@ -293,7 +293,7 @@
 	window.dataLayer = window.dataLayer || [];
 	function gtag(){dataLayer.push(arguments);}
 	gtag('js', new Date());
-	gtag('set', {'user_id': 'esat'});
+	gtag('set', {'user_id': '{{ session()->get('user_name') }}'});
 	gtag('config', 'UA-120508683-2');
 	</script>
 	<script>

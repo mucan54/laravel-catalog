@@ -247,8 +247,8 @@
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
-gtag('set', {'user_id': 'esat'});
-gtag('set', {'product': 'RS0001'});
+gtag('set', {'user_id': '{{ session()->get('user_name') }}'});
+gtag('set', {'product': '{{$projects->sku}}'});
 gtag('config', 'UA-120508683-2');
 </script>
 
