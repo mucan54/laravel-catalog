@@ -297,8 +297,8 @@ input[type=text]:placeholder {
     <!-- Login Form -->
     <form method="post" action="{{ url('login') }}">
         {{ csrf_field() }}
-      <input type="text" id="password" class="fadeIn third" name="password" placeholder="Şifrenizi Girin">
-      <input type="submit" class="fadeIn fourth" value="Giriş">
+      <input type="text" id="password" class="fadeIn third" name="password" placeholder="Enter your password...">
+      <input type="submit" class="fadeIn fourth" value="Login">
     </form>
 
   </div>
