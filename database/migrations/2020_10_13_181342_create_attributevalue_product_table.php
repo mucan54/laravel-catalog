@@ -14,6 +14,7 @@ class CreateAttributevalueProductTable extends Migration
     public function up()
     {
         Schema::create('attributevalue_product', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->id();
             $table->timestamps();
             $table->bigInteger('attributevalue_id');

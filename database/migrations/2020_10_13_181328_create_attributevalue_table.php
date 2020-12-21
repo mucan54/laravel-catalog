@@ -14,6 +14,7 @@ class CreateAttributevalueTable extends Migration
     public function up()
     {
         Schema::create('attributevalue', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->id();
             $table->timestamps();
             $table->string('name');
