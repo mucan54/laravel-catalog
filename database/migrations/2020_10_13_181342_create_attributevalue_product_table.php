@@ -17,8 +17,8 @@ class CreateAttributevalueProductTable extends Migration
             $table->engine = 'InnoDB';
             $table->id();
             $table->timestamps();
-            $table->bigInteger('attributevalue_id');
-            $table->bigInteger('product_id');
+            $table->integer('attributevalue_id')->unsigned();
+            $table->integer('product_id')->unsigned();
             $table->foreign('attributevalue_id')->references('id')->on('attributevalue')->onDelete('cascade');
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
         });
