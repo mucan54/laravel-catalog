@@ -67,8 +67,9 @@ class UserProfileScreen extends Screen
                 ->list([
                     ModalToggle::make(__('Change Password'))
                         ->icon('lock-open')
+                        ->modal('password')
                         ->method('changePassword')
-                        ->modal('password'),
+                        ,
                 ]),
 
             Button::make(__('Save'))

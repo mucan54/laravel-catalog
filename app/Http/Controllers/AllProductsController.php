@@ -54,7 +54,7 @@ class AllProductsController extends Controller
         $products = Products::latest();
         $attribute = Attribute::Where('order','<>',0)->orderBy("order")->get();
 
-        $products=$products->paginate(9)->onEachSide(3);
+        $products=$products->paginate(12)->onEachSide(3);
 
 
         return view('welcome', compact('products','attribute'));

@@ -15,6 +15,8 @@ return [
 
     'name' => env('APP_NAME', 'Laravel'),
 
+    'auth_config' => env('OFF_AUTH', null),
+
     /*
     |--------------------------------------------------------------------------
     | Application Environment

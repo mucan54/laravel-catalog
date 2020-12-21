@@ -20,7 +20,6 @@ class CustomerMiddleware
     public function handle(Request $request, Closure $next)
     {
 
-
         if (session()->has('sessionId')) {
 
             $stat= new Stats;
@@ -42,6 +41,10 @@ class CustomerMiddleware
                 $stat->save();
 
             }
+
+            return $next($request);
+        }
+        else if (config('app.auth_config')){
 
             return $next($request);
         }
