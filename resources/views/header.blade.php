@@ -33,7 +33,7 @@ padding: 10px;
             <div class="col-lg-4 col-md-2 col-12">
                 <!-- Logo -->
                 <div class="logo">
-                    <a href="{{ url('/') }}"><h3>Rosetta Stone Atelier</h3></a>
+                    <a href="{{ url('/') }}"><h3>Click Art Online Katalog</h3></a>
                 </div>
                
                 </div>
