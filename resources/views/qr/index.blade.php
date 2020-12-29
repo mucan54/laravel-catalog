@@ -45,7 +45,7 @@ padding: 5px;
                 <div class="col-lg-4 col-md-2 col-12">
                     <!-- Logo -->
                     <div class="logo">
-                        <h3>Rosetta Stone Atelier</h3>
+                        <h3>Click Art Online Katalog</h3>
                     </div>
                    
                     </div>
