@@ -76,8 +76,10 @@
             }
         
             .img{
-                width: 50%;
-        padding: 5px;
+                width: 100%;
+                height: 500px;
+                padding: 5px;
+                object-fit: cover;
             }
         }
         
@@ -97,6 +99,11 @@
 
         .container{
             max-width: unset !important;
+        }
+
+        .imgcontainer{
+            display: inline-grid;
+            width: 50%;
         }
             </style>
 	
@@ -127,7 +134,7 @@
 		<section class="product-area shop-sidebar shop section">
 			<div class="container" style='width:95%;'>
                 @if($projects->myhero)
-                <div class="row"><img style='width: 100%;height: 100%;padding-bottom: 50px;' src="{{ $projects->myhero->url }}"></div>
+                <div class="row"><img style='width: 100%;object-fit: cover;padding-bottom: 50px;' src="{{ $projects->myhero->url }}"></div>
                 @endif
                 <div class="row">
                     <div class="col-sm-8 parent owl-theme">
@@ -135,7 +142,9 @@
                         <div id='myimages' style='display: contents;'>
                         @foreach($projects->attachment()->get() as $item)
                         <a class='image-link' href='{{ $item->url }}'>
+                            <div class="imgcontainer">
                                 <img class='img nomobile' src="{{ $item->url }}">
+                            </div>
                         </a>
                                  @endforeach
                         </div>

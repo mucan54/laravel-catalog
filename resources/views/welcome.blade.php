@@ -78,7 +78,7 @@
 			display: table-cell;
 		}
 		.default-img{
-			width: 262px;
+			object-fit: cover;
 			height: 350px;
 		}
 		.link{
@@ -124,7 +124,7 @@
 
 			.product-img{
  			height: 350px;
- 			width: 262px;
+ 			object-fit: cover;
  			}
 		}
 
